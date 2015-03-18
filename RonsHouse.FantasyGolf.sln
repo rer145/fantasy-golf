@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RonsHouse.FantasyGolf.Web", "RonsHouse.FantasyGolf.Web\RonsHouse.FantasyGolf.Web.csproj", "{04F3BE86-B569-438D-B2BD-0AFFF1092EB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RonsHouse.FantasyGolf.Model", "RonsHouse.FantasyGolf.Model\RonsHouse.FantasyGolf.Model.csproj", "{0DD0D708-95B8-42BD-AC7B-C5EC2092A204}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04F3BE86-B569-438D-B2BD-0AFFF1092EB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F3BE86-B569-438D-B2BD-0AFFF1092EB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F3BE86-B569-438D-B2BD-0AFFF1092EB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F3BE86-B569-438D-B2BD-0AFFF1092EB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DD0D708-95B8-42BD-AC7B-C5EC2092A204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DD0D708-95B8-42BD-AC7B-C5EC2092A204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DD0D708-95B8-42BD-AC7B-C5EC2092A204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DD0D708-95B8-42BD-AC7B-C5EC2092A204}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
