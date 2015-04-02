@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\picks.aspx" />
+    <Content Include="admin\remote\tournaments.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -92,7 +93,9 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Scripts\npm.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin\picks.aspx.cs">
@@ -101,6 +104,13 @@
     </Compile>
     <Compile Include="admin\picks.aspx.designer.cs">
       <DependentUpon>picks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\remote\tournaments.aspx.cs">
+      <DependentUpon>tournaments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\remote\tournaments.aspx.designer.cs">
+      <DependentUpon>tournaments.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -111,6 +121,10 @@
     <ProjectReference Include="..\RonsHouse.FantasyGolf.Model\RonsHouse.FantasyGolf.Model.csproj">
       <Project>{0dd0d708-95b8-42bd-ac7b-c5ec2092a204}</Project>
       <Name>RonsHouse.FantasyGolf.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RonsHouse.FantasyGolf.SportsDataApi\RonsHouse.FantasyGolf.SportsDataApi.csproj">
+      <Project>{467394f3-dd39-4b6b-b630-54fb0488c017}</Project>
+      <Name>RonsHouse.FantasyGolf.SportsDataApi</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

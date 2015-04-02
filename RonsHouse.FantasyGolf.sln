@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RonsHouse.FantasyGolf.Web",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RonsHouse.FantasyGolf.Model", "RonsHouse.FantasyGolf.Model\RonsHouse.FantasyGolf.Model.csproj", "{0DD0D708-95B8-42BD-AC7B-C5EC2092A204}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RonsHouse.FantasyGolf.SportsDataApi", "RonsHouse.FantasyGolf.SportsDataApi\RonsHouse.FantasyGolf.SportsDataApi.csproj", "{467394F3-DD39-4B6B-B630-54FB0488C017}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0DD0D708-95B8-42BD-AC7B-C5EC2092A204}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DD0D708-95B8-42BD-AC7B-C5EC2092A204}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DD0D708-95B8-42BD-AC7B-C5EC2092A204}.Release|Any CPU.Build.0 = Release|Any CPU
+		{467394F3-DD39-4B6B-B630-54FB0488C017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{467394F3-DD39-4B6B-B630-54FB0488C017}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{467394F3-DD39-4B6B-B630-54FB0488C017}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{467394F3-DD39-4B6B-B630-54FB0488C017}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

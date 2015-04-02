@@ -2,7 +2,7 @@
 
 namespace RonsHouse.FantasyGolf.Model
 {
-    public class Tournament : BaseEntity
+    public class Tournament : BaseApiEntity
     {
 		public string Name { get; set; }
 		public DateTime BeginsOn { get; set; }

@@ -2,7 +2,7 @@
 
 namespace RonsHouse.FantasyGolf.Model
 {
-    public class Golfer : BaseEntity
+    public class Golfer : BaseApiEntity
     {
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
