@@ -10,7 +10,7 @@
 namespace RonsHouse.FantasyGolf.Web.Admin {
     
     
-    public partial class AdminPicksPage {
+    public partial class AdminStatsPage {
         
         /// <summary>
         /// form1 control.
@@ -40,39 +40,30 @@ namespace RonsHouse.FantasyGolf.Web.Admin {
         protected global::System.Web.UI.WebControls.DropDownList user_list;
         
         /// <summary>
-        /// golfer_list control.
+        /// results_grid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList golfer_list;
+        protected global::System.Web.UI.WebControls.GridView results_grid;
         
         /// <summary>
-        /// submit_button control.
+        /// standings_grid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button submit_button;
+        protected global::System.Web.UI.WebControls.GridView standings_grid;
         
         /// <summary>
-        /// message_label control.
+        /// userpicks_grid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label message_label;
-        
-        /// <summary>
-        /// picks_grid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView picks_grid;
+        protected global::System.Web.UI.WebControls.GridView userpicks_grid;
     }
 }

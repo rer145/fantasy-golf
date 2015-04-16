@@ -48,6 +48,11 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 			}
 		}
 
+		protected void OnSelectTournament(object sender, EventArgs e)
+		{
+			BindGrid();
+		}
+
 		protected void OnSavePick(object sender, EventArgs e)
 		{
 			//save values
@@ -65,6 +70,29 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 			
 			message_label.Visible = true;
 			message_label.Text = "Pick was saved";
+
+			BindGrid();
+		}
+
+		protected void BindGrid()
+		{
+			using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
+			{
+				connection.Open();
+
+				using (SqlCommand cmd = new SqlCommand("UserPick_GetByTournament", connection))
+				{
+					cmd.CommandType = CommandType.StoredProcedure;
+					cmd.Parameters.Add(new SqlParameter("TournamentId", tournament_list.SelectedValue));
+
+					IDataReader data = cmd.ExecuteReader();
+					picks_grid.DataSource = data;
+					picks_grid.DataBind();
+					data.Close();
+				}
+
+				connection.Close();
+			}
 		}
 	}
 }

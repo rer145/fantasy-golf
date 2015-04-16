@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
     
-		<p>Tournament: <asp:DropDownList ID="tournament_list" runat="server" DataTextField="Name" DataValueField="Id" /></p>
+		<p>Tournament: <asp:DropDownList ID="tournament_list" runat="server" DataTextField="Name" DataValueField="Id" AutoPostBack="true" OnSelectedIndexChanged="OnSelectTournament" /></p>
 		<p>User: <asp:DropDownList ID="user_list" runat="server" DataTextField="Name" DataValueField="Id" /></p>
 		<p>Golfer: <asp:DropDownList ID="golfer_list" runat="server" DataTextField="Name" DataValueField="Id" /></p>
 
@@ -17,7 +17,13 @@
 
 		<p><asp:Label ID="message_label" runat="server" /></p>
 
-
+		<h2>Tournament Picks</h2>
+		<asp:GridView ID="picks_grid" runat="server" AutoGenerateColumns="false" CellPadding="4">
+			<Columns>
+				<asp:BoundField HeaderText="User" DataField="UserName" />
+				<asp:BoundField HeaderText="Golfer" DataField="GolferName" />
+			</Columns>
+		</asp:GridView>
     </form>
 </body>
 </html>
