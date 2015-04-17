@@ -35,7 +35,8 @@
 
 		<div class="form-group">
 			<asp:Label ID="winnings_textbox_label" runat="server" AssociatedControlID="winnings_textbox" CssClass="col-lg-2 control-label">Winnings</asp:Label>
-			<div class="col-lg-10">
+			<div class="col-lg-10 input-group">
+				<span class="input-group-addon">$</span>
 				<asp:TextBox ID="winnings_textbox" runat="server" Width="100" CssClass="form-control" placeholder="Winnings" />
 			</div>
 		</div>
@@ -88,7 +89,7 @@
 					<Columns>
 						<asp:BoundField HeaderText="First Name" DataField="FirstName" />
 						<asp:BoundField HeaderText="Last Name" DataField="LastName" />
-						<asp:BoundField HeaderText="Place" DataField="Place" />
+						<asp:BoundField HeaderText="Place" DataField="PlaceDisplay" />
 						<asp:BoundField HeaderText="Winnings" DataField="Winnings" DataFormatString="{0:C2}" />
 					</Columns>
 				</asp:GridView>

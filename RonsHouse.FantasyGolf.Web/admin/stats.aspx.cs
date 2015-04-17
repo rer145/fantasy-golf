@@ -44,12 +44,21 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 
 		protected void OnSelectTournament(object sender, EventArgs e)
 		{
-			BindTournamentResults();
-			BindStandingsGrid();
+			//BindTournamentResults();
+			//BindStandingsGrid();
+			BindGrids();
 		}
 
 		protected void OnSelectUser(object sender, EventArgs e)
 		{
+			//BindUserPicksGrid();
+			//BindStandingsGrid();
+			BindGrids();
+		}
+
+		protected void BindGrids()
+		{
+			BindTournamentResults();
 			BindUserPicksGrid();
 			BindStandingsGrid();
 		}
@@ -76,6 +85,11 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 
 					connection.Close();
 				}
+			}
+			else
+			{
+				results_grid.DataSource = null;
+				results_grid.DataBind();
 			}
 		}
 
@@ -121,6 +135,11 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 
 					connection.Close();
 				}
+			}
+			else
+			{
+				userpicks_grid.DataSource = null;
+				userpicks_grid.DataBind();
 			}
 		}
 	}

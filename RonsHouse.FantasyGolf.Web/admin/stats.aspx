@@ -28,7 +28,7 @@
 					<Columns>
 						<asp:BoundField HeaderText="First Name" DataField="FirstName" />
 						<asp:BoundField HeaderText="Last Name" DataField="LastName" />
-						<asp:BoundField HeaderText="Place" DataField="Place" />
+						<asp:BoundField HeaderText="Place" DataField="PlaceDisplay" />
 						<asp:BoundField HeaderText="Winnings" DataField="Winnings" DataFormatString="{0:C2}" />
 					</Columns>
 				</asp:GridView>
@@ -48,7 +48,8 @@
 				<asp:GridView ID="userpicks_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover">
 					<Columns>
 						<asp:BoundField HeaderText="Tournament" DataField="Name" />
-						<asp:BoundField HeaderText="First Name" DataField="Pick" />
+						<asp:BoundField HeaderText="Golfer" DataField="Pick" />
+						<asp:BoundField HeaderText="Place" DataField="PlaceDisplay" />
 						<asp:BoundField HeaderText="Winnings" DataField="Winnings" DataFormatString="{0:C2}" />
 					</Columns>
 				</asp:GridView>
