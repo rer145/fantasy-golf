@@ -44,7 +44,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 
 				connection.Close();
 
-				message_label.Visible = false;
+				message_label_panel.Visible = false;
 			}
 		}
 
@@ -66,9 +66,9 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 			}, commandType: CommandType.StoredProcedure);
 
 			connection.Close();
-			
-			
-			message_label.Visible = true;
+
+
+			message_label_panel.Visible = true;
 			message_label.Text = "Pick was saved";
 
 			BindGrid();
@@ -88,6 +88,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					IDataReader data = cmd.ExecuteReader();
 					picks_grid.DataSource = data;
 					picks_grid.DataBind();
+					picks_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
 					data.Close();
 				}
 

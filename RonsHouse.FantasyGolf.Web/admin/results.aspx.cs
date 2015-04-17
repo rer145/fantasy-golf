@@ -31,7 +31,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 
 				connection.Close();
 
-				message_label.Visible = false;
+				message_label_panel.Visible = false;
 			}
 		}
 
@@ -86,7 +86,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 			//Response.Write("playoff: " + playoff_checkbox.Checked + "<br />");
 			
 			
-			message_label.Visible = true;
+			message_label_panel.Visible = true;
 			message_label.Text = "Result was saved";
 
 			//reset values
@@ -115,6 +115,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					IDataReader data = cmd.ExecuteReader();
 					standings_grid.DataSource = data;
 					standings_grid.DataBind();
+					standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
 					data.Close();
 				}
 
@@ -126,6 +127,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					IDataReader data = cmd.ExecuteReader();
 					results_grid.DataSource = data;
 					results_grid.DataBind();
+					results_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
 					data.Close();
 				}
 

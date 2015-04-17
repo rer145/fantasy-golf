@@ -70,6 +70,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 						IDataReader data = cmd.ExecuteReader();
 						results_grid.DataSource = data;
 						results_grid.DataBind();
+						results_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
 						data.Close();
 					}
 
@@ -91,6 +92,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					IDataReader data = cmd.ExecuteReader();
 					standings_grid.DataSource = data;
 					standings_grid.DataBind();
+					standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
 					data.Close();
 				}
 				connection.Close();
@@ -113,6 +115,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 						IDataReader data = cmd.ExecuteReader();
 						userpicks_grid.DataSource = data;
 						userpicks_grid.DataBind();
+						userpicks_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
 						data.Close();
 					}
 
