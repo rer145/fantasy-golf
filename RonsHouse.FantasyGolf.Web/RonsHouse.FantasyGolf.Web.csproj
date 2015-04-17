@@ -70,6 +70,7 @@
     <Content Include="admin\remote\tournaments.aspx" />
     <Content Include="packages.config" />
     <Content Include="admin\admin.master" />
+    <None Include="Properties\PublishProfiles\live.pubxml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
