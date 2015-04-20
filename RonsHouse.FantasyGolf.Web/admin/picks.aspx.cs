@@ -88,7 +88,8 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					IDataReader data = cmd.ExecuteReader();
 					picks_grid.DataSource = data;
 					picks_grid.DataBind();
-					picks_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
+					try { picks_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
+					catch { }
 					data.Close();
 				}
 

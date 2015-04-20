@@ -115,20 +115,31 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					IDataReader data = cmd.ExecuteReader();
 					standings_grid.DataSource = data;
 					standings_grid.DataBind();
-					standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
+					try
+					{
+						standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
+					}
+					catch { }
 					data.Close();
 				}
 
-				using (SqlCommand cmd = new SqlCommand("Tournament_GetResults", connection))
+				if (!String.IsNullOrEmpty(tournament_list.SelectedValue))
 				{
-					cmd.CommandType = CommandType.StoredProcedure;
-					cmd.Parameters.Add(new SqlParameter("TournamentId", tournament_list.SelectedValue));
+					using (SqlCommand cmd = new SqlCommand("Tournament_GetResults", connection))
+					{
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.Parameters.Add(new SqlParameter("TournamentId", tournament_list.SelectedValue));
 
-					IDataReader data = cmd.ExecuteReader();
-					results_grid.DataSource = data;
-					results_grid.DataBind();
-					results_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
-					data.Close();
+						IDataReader data = cmd.ExecuteReader();
+						results_grid.DataSource = data;
+						results_grid.DataBind();
+						try 
+						{ 
+							results_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
+						}
+						catch { }
+						data.Close();
+					}
 				}
 
 				connection.Close();
