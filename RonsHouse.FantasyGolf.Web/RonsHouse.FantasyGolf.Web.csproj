@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\default.aspx" />
+    <Content Include="admin\golfers.aspx" />
     <Content Include="admin\stats.aspx" />
     <Content Include="admin\results.aspx" />
     <Content Include="admin\picks.aspx" />
@@ -99,6 +100,13 @@
     </Compile>
     <Compile Include="admin\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\golfers.aspx.cs">
+      <DependentUpon>golfers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\golfers.aspx.designer.cs">
+      <DependentUpon>golfers.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\stats.aspx.cs">
       <DependentUpon>stats.aspx</DependentUpon>

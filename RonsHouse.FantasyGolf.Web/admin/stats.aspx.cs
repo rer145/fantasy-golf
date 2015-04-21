@@ -111,6 +111,59 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					catch { }
 					data.Close();
 				}
+
+				using (SqlCommand cmd = new SqlCommand("User_GetStandingsByTournamentGrouping", connection))
+				{
+					cmd.CommandType = CommandType.StoredProcedure;
+					cmd.Parameters.Add(new SqlParameter("TournamentGroupingId", 1));
+
+					IDataReader data = cmd.ExecuteReader();
+					quarter1_standings_grid.DataSource = data;
+					quarter1_standings_grid.DataBind();
+					try { quarter1_standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
+					catch { }
+					data.Close();
+				}
+
+				using (SqlCommand cmd = new SqlCommand("User_GetStandingsByTournamentGrouping", connection))
+				{
+					cmd.CommandType = CommandType.StoredProcedure;
+					cmd.Parameters.Add(new SqlParameter("TournamentGroupingId", 2));
+
+					IDataReader data = cmd.ExecuteReader();
+					quarter2_standings_grid.DataSource = data;
+					quarter2_standings_grid.DataBind();
+					try { quarter2_standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
+					catch { }
+					data.Close();
+				}
+
+				using (SqlCommand cmd = new SqlCommand("User_GetStandingsByTournamentGrouping", connection))
+				{
+					cmd.CommandType = CommandType.StoredProcedure;
+					cmd.Parameters.Add(new SqlParameter("TournamentGroupingId", 3));
+
+					IDataReader data = cmd.ExecuteReader();
+					quarter3_standings_grid.DataSource = data;
+					quarter3_standings_grid.DataBind();
+					try { quarter3_standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
+					catch { }
+					data.Close();
+				}
+
+				using (SqlCommand cmd = new SqlCommand("User_GetStandingsByTournamentGrouping", connection))
+				{
+					cmd.CommandType = CommandType.StoredProcedure;
+					cmd.Parameters.Add(new SqlParameter("TournamentGroupingId", 4));
+
+					IDataReader data = cmd.ExecuteReader();
+					quarter4_standings_grid.DataSource = data;
+					quarter4_standings_grid.DataBind();
+					try { quarter4_standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
+					catch { }
+					data.Close();
+				}
+
 				connection.Close();
 			}
 		}

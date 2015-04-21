@@ -10,105 +10,78 @@
 namespace RonsHouse.FantasyGolf.Web.Admin {
     
     
-    public partial class AdminStatsPage {
+    public partial class AdminGolfersPage {
         
         /// <summary>
-        /// tournament_list_label control.
+        /// message_label_panel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label tournament_list_label;
+        protected global::System.Web.UI.WebControls.Panel message_label_panel;
         
         /// <summary>
-        /// tournament_list control.
+        /// message_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList tournament_list;
+        protected global::System.Web.UI.WebControls.Label message_label;
         
         /// <summary>
-        /// user_list_label control.
+        /// firstname_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label user_list_label;
+        protected global::System.Web.UI.WebControls.Label firstname_label;
         
         /// <summary>
-        /// user_list control.
+        /// firstname_textbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList user_list;
+        protected global::System.Web.UI.WebControls.TextBox firstname_textbox;
         
         /// <summary>
-        /// quarter1_standings_grid control.
+        /// lastname_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView quarter1_standings_grid;
+        protected global::System.Web.UI.WebControls.Label lastname_label;
         
         /// <summary>
-        /// quarter2_standings_grid control.
+        /// lastname_textbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView quarter2_standings_grid;
+        protected global::System.Web.UI.WebControls.TextBox lastname_textbox;
         
         /// <summary>
-        /// quarter3_standings_grid control.
+        /// submit_button control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView quarter3_standings_grid;
+        protected global::System.Web.UI.WebControls.Button submit_button;
         
         /// <summary>
-        /// quarter4_standings_grid control.
+        /// golfer_grid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView quarter4_standings_grid;
-        
-        /// <summary>
-        /// standings_grid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView standings_grid;
-        
-        /// <summary>
-        /// results_grid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView results_grid;
-        
-        /// <summary>
-        /// userpicks_grid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView userpicks_grid;
+        protected global::System.Web.UI.WebControls.GridView golfer_grid;
     }
 }

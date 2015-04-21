@@ -48,6 +48,7 @@
 					<li><a href="picks.aspx">Picks</a></li>
 					<li><a href="results.aspx">Results</a></li>
 					<li><a href="stats.aspx">Stats</a></li>
+					<li><a href="golfers.aspx">Golfers</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Logout</a></li>

@@ -22,6 +22,59 @@
 		<legend>Results</legend>
 	
 		<div class="row">
+			<div class="col-lg-3">
+				<h4>Quarter 1 Standings</h4>
+				<asp:GridView ID="quarter1_standings_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover">
+					<Columns>
+						<asp:BoundField HeaderText="First Name" DataField="FirstName" />
+						<asp:BoundField HeaderText="Last Name" DataField="LastName" />
+						<asp:BoundField HeaderText="Winnings" DataField="Winnings" DataFormatString="{0:C2}" />
+					</Columns>
+				</asp:GridView>
+			</div>
+			<div class="col-lg-3">
+				<h4>Quarter 2 Standings</h4>
+				<asp:GridView ID="quarter2_standings_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover">
+					<Columns>
+						<asp:BoundField HeaderText="First Name" DataField="FirstName" />
+						<asp:BoundField HeaderText="Last Name" DataField="LastName" />
+						<asp:BoundField HeaderText="Winnings" DataField="Winnings" DataFormatString="{0:C2}" />
+					</Columns>
+				</asp:GridView>
+			</div>
+			<div class="col-lg-3">
+				<h4>Quarter 3 Standings</h4>
+				<asp:GridView ID="quarter3_standings_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover">
+					<Columns>
+						<asp:BoundField HeaderText="First Name" DataField="FirstName" />
+						<asp:BoundField HeaderText="Last Name" DataField="LastName" />
+						<asp:BoundField HeaderText="Winnings" DataField="Winnings" DataFormatString="{0:C2}" />
+					</Columns>
+				</asp:GridView>
+			</div>
+			<div class="col-lg-3">
+				<h4>Quarter 4 Standings</h4>
+				<asp:GridView ID="quarter4_standings_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover">
+					<Columns>
+						<asp:BoundField HeaderText="First Name" DataField="FirstName" />
+						<asp:BoundField HeaderText="Last Name" DataField="LastName" />
+						<asp:BoundField HeaderText="Winnings" DataField="Winnings" DataFormatString="{0:C2}" />
+					</Columns>
+				</asp:GridView>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-3">
+				<h4>Current Overall Standings</h4>
+				<asp:GridView ID="standings_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover">
+					<Columns>
+						<asp:BoundField HeaderText="First Name" DataField="FirstName" />
+						<asp:BoundField HeaderText="Last Name" DataField="LastName" />
+						<asp:BoundField HeaderText="Winnings" DataField="Winnings" DataFormatString="{0:C2}" />
+					</Columns>
+				</asp:GridView>
+			</div>
 			<div class="col-lg-4">
 				<h4>Tournament Results</h4>
 				<asp:GridView ID="results_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover">
@@ -29,16 +82,6 @@
 						<asp:BoundField HeaderText="First Name" DataField="FirstName" />
 						<asp:BoundField HeaderText="Last Name" DataField="LastName" />
 						<asp:BoundField HeaderText="Place" DataField="PlaceDisplay" />
-						<asp:BoundField HeaderText="Winnings" DataField="Winnings" DataFormatString="{0:C2}" />
-					</Columns>
-				</asp:GridView>
-			</div>
-			<div class="col-lg-3">
-				<h4>Current Standings</h4>
-				<asp:GridView ID="standings_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover">
-					<Columns>
-						<asp:BoundField HeaderText="First Name" DataField="FirstName" />
-						<asp:BoundField HeaderText="Last Name" DataField="LastName" />
 						<asp:BoundField HeaderText="Winnings" DataField="Winnings" DataFormatString="{0:C2}" />
 					</Columns>
 				</asp:GridView>
