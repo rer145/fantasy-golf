@@ -14,36 +14,38 @@ using Dapper;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
-	public partial class AdminPicksPage : System.Web.UI.Page
+	public partial class AdminPicksPage : BaseAdminPage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!Page.IsPostBack)
 			{
-				//load up values
-				SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
-				connection.Open();
+				if (base.IsLeagueSelected)
+				{
+					//load up values
+					SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
+					connection.Open();
 
-				var tournaments = connection.Query<Tournament>("select * from Tournament order by BeginsOn");
-				tournament_list.DataSource = tournaments;
-				tournament_list.DataBind();
-				tournament_list.Items.Insert(0, "");
-				tournament_list.SelectedIndex = 0;
+					var tournaments = connection.Query<Tournament>("Tournament_List", new { LeagueId = base.CurrentLeague }, commandType: CommandType.StoredProcedure);
+					tournament_list.DataSource = tournaments;
+					tournament_list.DataBind();
+					tournament_list.Items.Insert(0, "");
+					tournament_list.SelectedIndex = 0;
 
-				var users = connection.Query<User>("select *, LastName + ', ' + FirstName as Name from [User] order by LastName");
-				user_list.DataSource = users;
-				user_list.DataBind(); 
-				user_list.Items.Insert(0, "");
-				user_list.SelectedIndex = 0;
+					var users = connection.Query<User>("LeagueUser_List", new { LeagueId = base.CurrentLeague }, commandType: CommandType.StoredProcedure);
+					user_list.DataSource = users;
+					user_list.DataBind();
+					user_list.Items.Insert(0, "");
+					user_list.SelectedIndex = 0;
 
-				var golfers = connection.Query<Golfer>("select *, LastName + ', ' + FirstName as Name from Golfer order by LastName");
-				golfer_list.DataSource = golfers;
-				golfer_list.DataBind();
-				golfer_list.Items.Insert(0, "");
-				golfer_list.SelectedIndex = 0;
+					var golfers = connection.Query<Golfer>("select *, LastName + ', ' + FirstName as Name from Golfer order by LastName");
+					golfer_list.DataSource = golfers;
+					golfer_list.DataBind();
+					golfer_list.Items.Insert(0, "");
+					golfer_list.SelectedIndex = 0;
 
-				connection.Close();
-
+					connection.Close();
+				}
 				message_label_panel.Visible = false;
 			}
 		}

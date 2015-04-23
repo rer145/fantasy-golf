@@ -8,5 +8,7 @@ namespace RonsHouse.FantasyGolf.Model
 		public string Tour { get; set; }
 		public int Season { get; set; }
 		public int ManagerId { get; set; }
+		public DateTime BeginsOn { get; set; }
+		public DateTime EndsOn { get; set; }
     }
 }

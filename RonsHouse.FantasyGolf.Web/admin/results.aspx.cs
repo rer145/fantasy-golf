@@ -14,23 +14,25 @@ using Dapper;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
-	public partial class AdminResultsPage : System.Web.UI.Page
+	public partial class AdminResultsPage : BaseAdminPage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!Page.IsPostBack)
 			{
-				SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
-				connection.Open();
-				
-				var tournaments = connection.Query<Tournament>("select * from Tournament order by BeginsOn");
-				tournament_list.DataSource = tournaments;
-				tournament_list.DataBind();
-				tournament_list.Items.Insert(0, "");
-				tournament_list.SelectedIndex = 0;
+				if (base.IsLeagueSelected)
+				{
+					SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
+					connection.Open();
 
-				connection.Close();
+					var tournaments = connection.Query<Tournament>("Tournament_List", new { LeagueId = base.CurrentLeague }, commandType: CommandType.StoredProcedure);
+					tournament_list.DataSource = tournaments;
+					tournament_list.DataBind();
+					tournament_list.Items.Insert(0, "");
+					tournament_list.SelectedIndex = 0;
 
+					connection.Close();
+				}
 				message_label_panel.Visible = false;
 			}
 		}
@@ -108,19 +110,23 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 			{
 				connection.Open();
 
-				using (SqlCommand cmd = new SqlCommand("User_GetStandings", connection))
+				if (base.IsLeagueSelected)
 				{
-					cmd.CommandType = CommandType.StoredProcedure;
-
-					IDataReader data = cmd.ExecuteReader();
-					standings_grid.DataSource = data;
-					standings_grid.DataBind();
-					try
+					using (SqlCommand cmd = new SqlCommand("User_GetStandings", connection))
 					{
-						standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeague));
+
+						IDataReader data = cmd.ExecuteReader();
+						standings_grid.DataSource = data;
+						standings_grid.DataBind();
+						try
+						{
+							standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
+						}
+						catch { }
+						data.Close();
 					}
-					catch { }
-					data.Close();
 				}
 
 				if (!String.IsNullOrEmpty(tournament_list.SelectedValue))

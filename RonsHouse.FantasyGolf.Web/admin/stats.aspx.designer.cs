@@ -49,40 +49,13 @@ namespace RonsHouse.FantasyGolf.Web.Admin {
         protected global::System.Web.UI.WebControls.DropDownList user_list;
         
         /// <summary>
-        /// quarter1_standings_grid control.
+        /// groupings_list control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView quarter1_standings_grid;
-        
-        /// <summary>
-        /// quarter2_standings_grid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView quarter2_standings_grid;
-        
-        /// <summary>
-        /// quarter3_standings_grid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView quarter3_standings_grid;
-        
-        /// <summary>
-        /// quarter4_standings_grid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView quarter4_standings_grid;
+        protected global::System.Web.UI.WebControls.Repeater groupings_list;
         
         /// <summary>
         /// standings_grid control.

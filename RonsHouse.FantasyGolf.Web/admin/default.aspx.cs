@@ -14,7 +14,7 @@ using Dapper;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
-	public partial class AdminDefaultPage : System.Web.UI.Page
+	public partial class AdminDefaultPage : BaseAdminPage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -26,21 +26,25 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 
 		protected void BindStandingsGrid()
 		{
-			using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
+			if (base.IsLeagueSelected)
 			{
-				connection.Open();
-
-				using (SqlCommand cmd = new SqlCommand("User_GetStandings", connection))
+				using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
 				{
-					cmd.CommandType = CommandType.StoredProcedure;
+					connection.Open();
 
-					IDataReader data = cmd.ExecuteReader();
-					standings_grid.DataSource = data;
-					standings_grid.DataBind();
-					standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
-					data.Close();
+					using (SqlCommand cmd = new SqlCommand("User_GetStandings", connection))
+					{
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeague));
+
+						IDataReader data = cmd.ExecuteReader();
+						standings_grid.DataSource = data;
+						standings_grid.DataBind();
+						standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
+						data.Close();
+					}
+					connection.Close();
 				}
-				connection.Close();
 			}
 		}
 	}

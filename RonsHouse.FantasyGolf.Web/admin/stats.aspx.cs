@@ -14,32 +14,35 @@ using Dapper;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
-	public partial class AdminStatsPage : System.Web.UI.Page
+	public partial class AdminStatsPage : BaseAdminPage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!Page.IsPostBack)
 			{
-				//load up values
-				SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
-				connection.Open();
+				if (base.IsLeagueSelected)
+				{
+					//load up values
+					SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
+					connection.Open();
 
-				var tournaments = connection.Query<Tournament>("select * from Tournament order by BeginsOn");
-				tournament_list.DataSource = tournaments;
-				tournament_list.DataBind();
-				tournament_list.Items.Insert(0, "");
-				tournament_list.SelectedIndex = 0;
+					var tournaments = connection.Query<Tournament>("Tournament_List", new { LeagueId = base.CurrentLeague }, commandType: CommandType.StoredProcedure);
+					tournament_list.DataSource = tournaments;
+					tournament_list.DataBind();
+					tournament_list.Items.Insert(0, "");
+					tournament_list.SelectedIndex = 0;
 
-				var users = connection.Query<User>("select *, LastName + ', ' + FirstName as Name from [User] order by LastName");
-				user_list.DataSource = users;
-				user_list.DataBind();
-				user_list.Items.Insert(0, "");
-				user_list.SelectedIndex = 0;
+					var users = connection.Query<User>("LeagueUser_List", new { LeagueId = base.CurrentLeague }, commandType: CommandType.StoredProcedure);
+					user_list.DataSource = users;
+					user_list.DataBind();
+					user_list.Items.Insert(0, "");
+					user_list.SelectedIndex = 0;
 
-				connection.Close();
+					connection.Close();
+
+					BindStandingsGrid();
+				}
 			}
-			
-			BindStandingsGrid();
 		}
 
 		protected void OnSelectTournament(object sender, EventArgs e)
@@ -103,6 +106,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 				using (SqlCommand cmd = new SqlCommand("User_GetStandings", connection))
 				{
 					cmd.CommandType = CommandType.StoredProcedure;
+					cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeague));
 
 					IDataReader data = cmd.ExecuteReader();
 					standings_grid.DataSource = data;
@@ -112,57 +116,9 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					data.Close();
 				}
 
-				using (SqlCommand cmd = new SqlCommand("User_GetStandingsByTournamentGrouping", connection))
-				{
-					cmd.CommandType = CommandType.StoredProcedure;
-					cmd.Parameters.Add(new SqlParameter("TournamentGroupingId", 1));
-
-					IDataReader data = cmd.ExecuteReader();
-					quarter1_standings_grid.DataSource = data;
-					quarter1_standings_grid.DataBind();
-					try { quarter1_standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
-					catch { }
-					data.Close();
-				}
-
-				using (SqlCommand cmd = new SqlCommand("User_GetStandingsByTournamentGrouping", connection))
-				{
-					cmd.CommandType = CommandType.StoredProcedure;
-					cmd.Parameters.Add(new SqlParameter("TournamentGroupingId", 2));
-
-					IDataReader data = cmd.ExecuteReader();
-					quarter2_standings_grid.DataSource = data;
-					quarter2_standings_grid.DataBind();
-					try { quarter2_standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
-					catch { }
-					data.Close();
-				}
-
-				using (SqlCommand cmd = new SqlCommand("User_GetStandingsByTournamentGrouping", connection))
-				{
-					cmd.CommandType = CommandType.StoredProcedure;
-					cmd.Parameters.Add(new SqlParameter("TournamentGroupingId", 3));
-
-					IDataReader data = cmd.ExecuteReader();
-					quarter3_standings_grid.DataSource = data;
-					quarter3_standings_grid.DataBind();
-					try { quarter3_standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
-					catch { }
-					data.Close();
-				}
-
-				using (SqlCommand cmd = new SqlCommand("User_GetStandingsByTournamentGrouping", connection))
-				{
-					cmd.CommandType = CommandType.StoredProcedure;
-					cmd.Parameters.Add(new SqlParameter("TournamentGroupingId", 4));
-
-					IDataReader data = cmd.ExecuteReader();
-					quarter4_standings_grid.DataSource = data;
-					quarter4_standings_grid.DataBind();
-					try { quarter4_standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
-					catch { }
-					data.Close();
-				}
+				var groupings = connection.Query<TournamentGrouping>("TournamentGrouping_List", new { LeagueId = base.CurrentLeague }, commandType: CommandType.StoredProcedure);
+				groupings_list.DataSource = groupings;
+				groupings_list.DataBind();
 
 				connection.Close();
 			}
@@ -196,6 +152,37 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 			{
 				userpicks_grid.DataSource = null;
 				userpicks_grid.DataBind();
+			}
+		}
+
+		protected void OnDataBindTournamentGrouping(object sender, RepeaterItemEventArgs e)
+		{
+			if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+			{
+				var grid = (GridView)e.Item.FindControl("tournament_grouping_standings_grid");
+				if (grid != null)
+				{
+					var grouping = (TournamentGrouping)e.Item.DataItem;
+					using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
+					{
+						connection.Open();
+
+						using (SqlCommand cmd = new SqlCommand("User_GetStandingsByTournamentGrouping", connection))
+						{
+							cmd.CommandType = CommandType.StoredProcedure;
+							cmd.Parameters.Add(new SqlParameter("TournamentGroupingId", grouping.Id));
+
+							IDataReader data = cmd.ExecuteReader();
+							grid.DataSource = data;
+							grid.DataBind();
+							try { grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
+							catch { }
+							data.Close();
+						}
+
+						connection.Close();
+					}
+				}
 			}
 		}
 	}

@@ -38,6 +38,8 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 
 			connection.Close();
 
+			firstname_textbox.Text = "";
+			lastname_textbox.Text = "";
 
 			message_label_panel.Visible = true;
 			message_label.Text = "Golfer was saved";

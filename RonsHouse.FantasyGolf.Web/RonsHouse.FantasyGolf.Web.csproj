@@ -94,6 +94,9 @@
     <Compile Include="admin\admin.master.designer.cs">
       <DependentUpon>admin.master</DependentUpon>
     </Compile>
+    <Compile Include="admin\BaseAdminPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="admin\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

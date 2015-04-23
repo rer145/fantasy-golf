@@ -32,6 +32,8 @@
     <asp:ContentPlaceHolder ID="head_placeholder" runat="server" />
 </head>
 <body>
+	<form id="form1" runat="server" class="form-horizontal">
+
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -53,21 +55,28 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Logout</a></li>
 				</ul>
+				<div class="navbar-form navbar-right">
+					<div class="form-group">
+						<asp:DropDownList ID="league_list" runat="server" AutoPostBack="true" OnSelectedIndexChanged="OnSelectLeague" CssClass="form-control" DataTextField="Name" DataValueField="Id" />
+					</div>
+				</div>
 			</div>
 		</div>
 	</nav>
 
 	<div class="container">
-		<form id="form1" runat="server" class="form-horizontal">
-			<asp:ContentPlaceHolder ID="content_placeholder" runat="server" />
-		</form>
+		<asp:Panel ID="noleague_panel" runat="server" Visible="false">
+			<div class="alert alert-danger">
+				No league has been selected.  Please choose one from the header before continuing.
+			</div>
+		</asp:Panel>
 
-		<%--<footer>
-			<p>&copy; RonsHouse</p>
-		</footer>--%>
+		<asp:ContentPlaceHolder ID="content_placeholder" runat="server" />
 	</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	</form>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 </html>
