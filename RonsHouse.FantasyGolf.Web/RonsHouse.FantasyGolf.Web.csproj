@@ -69,6 +69,7 @@
     <Content Include="admin\results.aspx" />
     <Content Include="admin\picks.aspx" />
     <Content Include="admin\remote\tournaments.aspx" />
+    <Content Include="logout.aspx" />
     <Content Include="login.aspx" />
     <Content Include="default.aspx" />
     <Content Include="packages.config" />
@@ -90,6 +91,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

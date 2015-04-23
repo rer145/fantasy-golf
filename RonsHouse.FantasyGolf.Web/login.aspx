@@ -13,7 +13,13 @@
 				<asp:TextBox ID="password_textbox" runat="server" CssClass="form-control" TextMode="Password" />
 			</div>
 			<div class="form-group">
-				<div class="col-lg-10 col-lg-offset-9">
+				<div class="col-lg-2">
+					<asp:Label ID="rememberme_label" runat="server" AssociatedControlID="rememberme_checkbox" CssClass="checkbox pull-right">
+						<asp:CheckBox ID="rememberme_checkbox" runat="server" />
+						Remember me?
+					</asp:Label>
+				</div>
+				<div class="col-lg-8 col-lg-offset-9">
 					<asp:Button ID="submit_button" runat="server" Text="Login" OnClick="OnLogin" CssClass="btn btn-default" />
 				</div>
 			</div>

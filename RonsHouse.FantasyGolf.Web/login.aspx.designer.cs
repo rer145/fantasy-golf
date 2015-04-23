@@ -49,6 +49,24 @@ namespace RonsHouse.FantasyGolf.Web {
         protected global::System.Web.UI.WebControls.TextBox password_textbox;
         
         /// <summary>
+        /// rememberme_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label rememberme_label;
+        
+        /// <summary>
+        /// rememberme_checkbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox rememberme_checkbox;
+        
+        /// <summary>
         /// submit_button control.
         /// </summary>
         /// <remarks>

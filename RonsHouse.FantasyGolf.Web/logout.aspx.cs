@@ -15,24 +15,12 @@ using Dapper;
 
 namespace RonsHouse.FantasyGolf.Web
 {
-	public partial class LoginPage : BasePage
+	public partial class LogoutPage : BasePage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
-		}
-
-		protected void OnLogin(object sender, EventArgs e)
-		{
-			var email = email_textbox.Text;
-			var pass = password_textbox.Text;
-
-			//lookup in database
-
-			if (email == "ron.richardson@gmail.com" && pass == "password")
-			{
-				FormsAuthentication.RedirectFromLoginPage(email, rememberme_checkbox.Checked);
-			}
+			FormsAuthentication.SignOut();
+			Response.Redirect("/default.aspx");
 		}
 	}
 }

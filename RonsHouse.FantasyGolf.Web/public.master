@@ -52,7 +52,7 @@
 					<li><a href="#">Leagues</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="login.aspx">Login</a></li>
+					<li><a href="/admin/default.aspx">Login</a></li>
 				</ul>
 			</div>
 		</div>

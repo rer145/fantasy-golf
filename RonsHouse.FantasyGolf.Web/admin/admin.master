@@ -43,27 +43,34 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="default.aspx">Fantasy Golf Admin</a>
+				<a class="navbar-brand" href="/admin/default.aspx">Fantasy Golf Admin</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="stats.aspx">Stats</a></li>
+					<li><a href="/admin/stats.aspx">Stats</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">League Owner <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="/admin/league/default.aspx">League</a></li>
+							<li><a href="/admin/league/users.aspx">Users</a></li>
+							<li><a href="/admin/league/groupings.aspx">Groupings</a></li>
+							<li><a href="/admin/picks.aspx">Picks</a></li>
+						</ul>
+					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="leagues.aspx">Leagues</a></li>
-							<li><a href="users.aspx">Users</a></li>
-							<li><a href="groupings.aspx">Groupings</a></li>
-							<li><a href="results.aspx">Results</a></li>
-							<li><a href="picks.aspx">Picks</a></li>
+							<li><a href="/admin/leagues.aspx">Leagues</a></li>
+							<li><a href="/admin/users.aspx">Users</a></li>
 							<li class="divider"></li>
-							<li><a href="golfers.aspx">Golfers</a></li>
-							<li><a href="tournaments.aspx">Tournaments</a></li>
+							<li><a href="/admin/golfers.aspx">Golfers</a></li>
+							<li><a href="/admin/tournaments.aspx">Tournaments</a></li>
+							<li><a href="/admin/results.aspx">Results</a></li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Logout</a></li>
+					<li><a href="/logout.aspx">Logout</a></li>
 				</ul>
 				<div class="navbar-form navbar-right">
 					<div class="form-group">
