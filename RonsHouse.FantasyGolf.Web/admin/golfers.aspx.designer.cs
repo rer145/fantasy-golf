@@ -67,6 +67,24 @@ namespace RonsHouse.FantasyGolf.Web.Admin {
         protected global::System.Web.UI.WebControls.TextBox lastname_textbox;
         
         /// <summary>
+        /// tour_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label tour_label;
+        
+        /// <summary>
+        /// tour_list control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList tour_list;
+        
+        /// <summary>
         /// submit_button control.
         /// </summary>
         /// <remarks>

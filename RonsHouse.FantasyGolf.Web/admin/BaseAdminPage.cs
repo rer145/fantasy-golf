@@ -4,19 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
 	public class BaseAdminPage : Page
 	{
-		public bool IsLeagueSelected
+		protected override void OnLoad(EventArgs e)
 		{
-			get { return Session["FantasyGolf.CurrentLeague"] != null && !String.IsNullOrEmpty(Session["FantasyGolf.CurrentLeague"].ToString()); }
-		}
+			//DropDownList leagueList = (DropDownList)base.Master.FindControl("league_list");
+			//if (leagueList != null)
+			//{
+			//	leagueList.Visible = false;
+			//}
 
-		public int CurrentLeague
-		{
-			get { return IsLeagueSelected ? Convert.ToInt32(Session["FantasyGolf.CurrentLeague"]) : 0; }
+			base.OnLoad(e);
 		}
 	}
 }

@@ -14,13 +14,13 @@ using Dapper;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
-	public partial class AdminGolfersPage : System.Web.UI.Page
+	public partial class AdminGolfersPage : BaseAdminPage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!Page.IsPostBack)
 			{
-				BindGrid();
+				BindData();
 				message_label_panel.Visible = false;
 			}
 		}
@@ -33,7 +33,8 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 
 			connection.Query("Golfer_Save", new { 
 				FirstName = firstname_textbox.Text, 
-				LastName = lastname_textbox.Text
+				LastName = lastname_textbox.Text,
+				TourId = tour_list.SelectedValue
 			}, commandType: CommandType.StoredProcedure);
 
 			connection.Close();
@@ -44,10 +45,10 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 			message_label_panel.Visible = true;
 			message_label.Text = "Golfer was saved";
 
-			BindGrid();
+			BindData();
 		}
 
-		protected void BindGrid()
+		protected void BindData()
 		{
 			//load up values
 			SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
@@ -58,6 +59,12 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 			golfer_grid.DataBind();
 			try { golfer_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
 			catch { }
+
+			var tours = connection.Query<Golfer>("select * from Tour order by Name");
+			tour_list.DataSource = tours;
+			tour_list.DataBind();
+			tour_list.Items.Insert(0, "");
+			tour_list.SelectedIndex = 0;
 
 			connection.Close();
 		}

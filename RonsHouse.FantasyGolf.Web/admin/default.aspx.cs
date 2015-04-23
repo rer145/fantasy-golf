@@ -14,7 +14,7 @@ using Dapper;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
-	public partial class AdminDefaultPage : BaseAdminPage
+	public partial class AdminDefaultPage : BaseAdminLeaguePage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{

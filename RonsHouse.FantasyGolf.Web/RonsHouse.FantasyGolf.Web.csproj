@@ -69,8 +69,11 @@
     <Content Include="admin\results.aspx" />
     <Content Include="admin\picks.aspx" />
     <Content Include="admin\remote\tournaments.aspx" />
+    <Content Include="login.aspx" />
+    <Content Include="default.aspx" />
     <Content Include="packages.config" />
     <Content Include="admin\admin.master" />
+    <Content Include="public.master" />
     <None Include="Properties\PublishProfiles\live.pubxml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Web.Debug.config">
@@ -87,12 +90,36 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="public.master.cs">
+      <DependentUpon>public.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="public.master.designer.cs">
+      <DependentUpon>public.master</DependentUpon>
+    </Compile>
     <Compile Include="admin\admin.master.cs">
       <DependentUpon>admin.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\admin.master.designer.cs">
       <DependentUpon>admin.master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\BaseAdminLeaguePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\BaseAdminPage.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -138,6 +165,9 @@
     </Compile>
     <Compile Include="admin\remote\tournaments.aspx.designer.cs">
       <DependentUpon>tournaments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

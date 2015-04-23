@@ -24,6 +24,12 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<asp:Label ID="tour_label" runat="server" AssociatedControlID="tour_list" CssClass="col-lg-2 control-label">Tour</asp:Label>
+			<div class="col-lg-10">
+				<asp:DropDownList ID="tour_list" runat="server" DataTextField="Name" DataValueField="Id" CssClass="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
 			<div class="col-lg-10 col-lg-offset-2">
 				<asp:Button id="submit_button" runat="server" Text="Save Golfer" OnClick="OnSaveGolfer" CssClass="btn btn-default" />
 			</div>

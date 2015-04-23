@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="admin.master.cs" Inherits="RonsHouse.FantasyGolf.Web.Admin.AdminMasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="public.master.cs" Inherits="RonsHouse.FantasyGolf.Web.PublicMasterPage" %>
 
 <!DOCTYPE html>
 
@@ -11,7 +11,7 @@
 	<meta name="description" content="" />
 	<meta name="author" content="Ron Richardson" />
 	
-	<title>Fantasy Golf Admin</title>
+	<title>Fantasy Golf</title>
 	
 	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/boostrap.min.css" />
 	<%--<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/superhero/bootstrap.min.css" rel="stylesheet">--%>
@@ -43,44 +43,22 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="default.aspx">Fantasy Golf Admin</a>
+				<a class="navbar-brand" href="default.aspx">Fantasy Golf</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="stats.aspx">Stats</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="leagues.aspx">Leagues</a></li>
-							<li><a href="users.aspx">Users</a></li>
-							<li><a href="groupings.aspx">Groupings</a></li>
-							<li><a href="results.aspx">Results</a></li>
-							<li><a href="picks.aspx">Picks</a></li>
-							<li class="divider"></li>
-							<li><a href="golfers.aspx">Golfers</a></li>
-							<li><a href="tournaments.aspx">Tournaments</a></li>
-						</ul>
-					</li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact Us</a></li>
+					<li><a href="#">Leagues</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Logout</a></li>
+					<li><a href="login.aspx">Login</a></li>
 				</ul>
-				<div class="navbar-form navbar-right">
-					<div class="form-group">
-						<asp:DropDownList ID="league_list" runat="server" AutoPostBack="true" OnSelectedIndexChanged="OnSelectLeague" CssClass="form-control" DataTextField="Name" DataValueField="Id" Visible="false" />
-					</div>
-				</div>
 			</div>
 		</div>
 	</nav>
 
 	<div class="container">
-		<asp:Panel ID="noleague_panel" runat="server" Visible="false">
-			<div class="alert alert-danger">
-				No league has been selected.  Please choose one from the header before continuing.
-			</div>
-		</asp:Panel>
-
 		<asp:ContentPlaceHolder ID="content_placeholder" runat="server" />
 	</div>
 

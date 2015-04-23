@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="BaseApiEntity.cs" />
     <Compile Include="BaseEntity.cs" />
+    <Compile Include="Tour.cs" />
     <Compile Include="League.cs" />
     <Compile Include="TournamentResult.cs" />
     <Compile Include="TournamentGrouping.cs" />
