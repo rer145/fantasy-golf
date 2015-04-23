@@ -128,24 +128,28 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 		{
 			if (!String.IsNullOrEmpty(user_list.SelectedValue))
 			{
-				using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
+				if (base.IsLeagueSelected)
 				{
-					connection.Open();
-
-					using (SqlCommand cmd = new SqlCommand("User_GetPicksByTournament", connection))
+					using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
 					{
-						cmd.CommandType = CommandType.StoredProcedure;
-						cmd.Parameters.Add(new SqlParameter("UserId", user_list.SelectedValue));
+						connection.Open();
 
-						IDataReader data = cmd.ExecuteReader();
-						userpicks_grid.DataSource = data;
-						userpicks_grid.DataBind();
-						try { userpicks_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
-						catch { }
-						data.Close();
+						using (SqlCommand cmd = new SqlCommand("User_GetPicksByTournament", connection))
+						{
+							cmd.CommandType = CommandType.StoredProcedure;
+							cmd.Parameters.Add(new SqlParameter("UserId", user_list.SelectedValue));
+							cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeague));
+
+							IDataReader data = cmd.ExecuteReader();
+							userpicks_grid.DataSource = data;
+							userpicks_grid.DataBind();
+							try { userpicks_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
+							catch { }
+							data.Close();
+						}
+
+						connection.Close();
 					}
-
-					connection.Close();
 				}
 			}
 			else

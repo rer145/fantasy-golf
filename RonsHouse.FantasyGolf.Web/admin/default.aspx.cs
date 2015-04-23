@@ -40,7 +40,8 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 						IDataReader data = cmd.ExecuteReader();
 						standings_grid.DataSource = data;
 						standings_grid.DataBind();
-						standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
+						try { standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
+						catch { }
 						data.Close();
 					}
 					connection.Close();
