@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\default.aspx" />
+    <Content Include="admin\tournaments.aspx" />
     <Content Include="admin\golfers.aspx" />
     <Content Include="admin\stats.aspx" />
     <Content Include="admin\results.aspx" />
@@ -91,6 +92,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\tournaments.aspx.cs">
+      <DependentUpon>tournaments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\tournaments.aspx.designer.cs">
+      <DependentUpon>tournaments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="logout.aspx.cs">
       <DependentUpon>logout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -191,6 +199,9 @@
       <Project>{467394f3-dd39-4b6b-b630-54fb0488c017}</Project>
       <Name>RonsHouse.FantasyGolf.SportsDataApi</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="api\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -25,7 +25,8 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 			if (!String.IsNullOrEmpty(league_list.SelectedValue))
 			{
 				Session["FantasyGolf.CurrentLeague"] = league_list.SelectedValue;
-				Response.Redirect("default.aspx", false);
+				//Response.Redirect("default.aspx", false);
+				Response.Redirect(Request.Url.AbsoluteUri, false);
 			}
 		}
 	}
