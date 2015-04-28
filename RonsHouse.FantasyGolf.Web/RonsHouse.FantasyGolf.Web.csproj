@@ -42,6 +42,14 @@
     <Reference Include="Dapper">
       <HintPath>..\packages\Dapper.1.39\lib\net45\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
@@ -70,6 +78,8 @@
     <Content Include="admin\results.aspx" />
     <Content Include="admin\picks.aspx" />
     <Content Include="admin\remote\tournaments.aspx" />
+    <Content Include="admin\user\picks.aspx" />
+    <Content Include="controls\navigation.ascx" />
     <Content Include="logout.aspx" />
     <Content Include="login.aspx" />
     <Content Include="default.aspx" />
@@ -98,6 +108,20 @@
     </Compile>
     <Compile Include="admin\tournaments.aspx.designer.cs">
       <DependentUpon>tournaments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\user\picks.aspx.cs">
+      <DependentUpon>picks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\user\picks.aspx.designer.cs">
+      <DependentUpon>picks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\navigation.ascx.cs">
+      <DependentUpon>navigation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\navigation.ascx.designer.cs">
+      <DependentUpon>navigation.ascx</DependentUpon>
     </Compile>
     <Compile Include="logout.aspx.cs">
       <DependentUpon>logout.aspx</DependentUpon>
@@ -191,9 +215,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RonsHouse.FantasyGolf.EF\RonsHouse.FantasyGolf.EF.csproj">
+      <Project>{e19cccfd-fa03-4114-b504-a14a05fd828e}</Project>
+      <Name>RonsHouse.FantasyGolf.EF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RonsHouse.FantasyGolf.Model\RonsHouse.FantasyGolf.Model.csproj">
       <Project>{0dd0d708-95b8-42bd-ac7b-c5ec2092a204}</Project>
       <Name>RonsHouse.FantasyGolf.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RonsHouse.FantasyGolf.Services\RonsHouse.FantasyGolf.Services.csproj">
+      <Project>{1cc09444-9488-42e4-ae5f-be685335a2d9}</Project>
+      <Name>RonsHouse.FantasyGolf.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\RonsHouse.FantasyGolf.SportsDataApi\RonsHouse.FantasyGolf.SportsDataApi.csproj">
       <Project>{467394f3-dd39-4b6b-b630-54fb0488c017}</Project>
@@ -201,7 +233,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="admin\owner\" />
     <Folder Include="api\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

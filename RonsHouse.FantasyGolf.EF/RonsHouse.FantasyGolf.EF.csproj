@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\GolferExtensions.cs" />
     <Compile Include="FantasyGolfContext.cs" />
     <Compile Include="Golfer.cs" />
     <Compile Include="League.cs" />

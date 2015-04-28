@@ -12,6 +12,12 @@
 	<meta name="author" content="Ron Richardson" />
 	
 	<title>Fantasy Golf Admin</title>
+
+	<%--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>--%>
+	<%--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>--%>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 	
 	<%--<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/boostrap.min.css" />--%>
 	<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
@@ -67,6 +73,7 @@
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="/admin/leagues.aspx">Leagues</a></li>
 							<li><a href="/admin/users.aspx">Users</a></li>
+							<li><a href="/admin/user/picks.aspx">Mass User Picks</a></li>
 							<li class="divider"></li>
 							<li><a href="/admin/golfers.aspx">Golfers</a></li>
 							<li><a href="/admin/tournaments.aspx">Tournaments</a></li>
@@ -98,10 +105,5 @@
 
 	</form>
 
-	<%--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>--%>
-	<%--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>--%>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 </body>
 </html>

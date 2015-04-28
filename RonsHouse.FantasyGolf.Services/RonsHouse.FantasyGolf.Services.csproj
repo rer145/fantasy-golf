@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CacheService.cs" />
+    <Compile Include="UserPickService.cs" />
+    <Compile Include="GolferService.cs" />
     <Compile Include="LeagueService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

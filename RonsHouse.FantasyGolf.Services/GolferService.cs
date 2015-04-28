@@ -8,16 +8,16 @@ using RonsHouse.FantasyGolf.EF;
 
 namespace RonsHouse.FantasyGolf.Services
 {
-	public static class LeagueService
+	public static class GolferService
 	{
-		public static League Get(int id)
+		public static Golfer Get(int id)
 		{
 			var cache = new CacheService();
-			return cache.Get("fg.league-" + id.ToString(), 60, () =>
+			return cache.Get("fg.golfer-" + id.ToString(), 60, () =>
 			{
 				using (var db = new FantasyGolfContext())
 				{
-					var result = from x in db.League
+					var result = from x in db.Golfer
 						   where x.Id == id
 						   select x;
 
@@ -26,16 +26,16 @@ namespace RonsHouse.FantasyGolf.Services
 			});
 		}
 		
-		public static IList<League> GetActiveLeagues()
+		public static IList<Golfer> ListActive()
 		{
 			var cache = new CacheService();
-			return cache.Get("fg.leagues", 60, () =>
+			return cache.Get("fg.golfers", 60, () =>
 			{
 				using (var db = new FantasyGolfContext())
 				{
-					var result = from x in db.League
+					var result = from x in db.Golfer
 								  where x.IsActive == true
-								  orderby x.Season descending
+								  orderby x.LastName, x.FirstName
 								  select x;
 
 					return result.ToList();

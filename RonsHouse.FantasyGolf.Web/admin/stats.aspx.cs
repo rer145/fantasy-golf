@@ -32,7 +32,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					tournament_list.Items.Insert(0, "");
 					tournament_list.SelectedIndex = 0;
 
-					var users = connection.Query<User>("LeagueUser_List", new { LeagueId = base.CurrentLeague }, commandType: CommandType.StoredProcedure);
+					var users = connection.Query<RonsHouse.FantasyGolf.Model.User>("LeagueUser_List", new { LeagueId = base.CurrentLeague }, commandType: CommandType.StoredProcedure);
 					user_list.DataSource = users;
 					user_list.DataBind();
 					user_list.Items.Insert(0, "");

@@ -7,45 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RonsHouse.FantasyGolf.Web {
+namespace RonsHouse.FantasyGolf.Web.Admin.User {
     
     
-    public partial class PublicMasterPage {
+    public partial class PicksPage {
         
         /// <summary>
-        /// head_placeholder control.
+        /// user_list_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head_placeholder;
+        protected global::System.Web.UI.WebControls.Label user_list_label;
         
         /// <summary>
-        /// form1 control.
+        /// user_list control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.DropDownList user_list;
         
         /// <summary>
-        /// navigation_control control.
+        /// userpicks_grid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RonsHouse.FantasyGolf.Web.Controls.NavigationUserControl navigation_control;
-        
-        /// <summary>
-        /// content_placeholder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder content_placeholder;
+        protected global::System.Web.UI.WebControls.GridView userpicks_grid;
     }
 }

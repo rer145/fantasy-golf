@@ -29,7 +29,7 @@ namespace RonsHouse.FantasyGolf.Web
 
 			//lookup in database
 
-			if (email == "ron.richardson@gmail.com" && pass == "password")
+			if (email == "ron" && pass == "ron")
 			{
 				FormsAuthentication.RedirectFromLoginPage(email, rememberme_checkbox.Checked);
 			}

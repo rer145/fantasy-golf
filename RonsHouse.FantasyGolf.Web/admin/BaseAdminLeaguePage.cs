@@ -10,6 +10,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using RonsHouse.FantasyGolf.Model;
+using RonsHouse.FantasyGolf.Services;
 
 using Dapper;
 
@@ -40,11 +41,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 				{
 					leagueList.Visible = true;
 
-					SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
-					connection.Open();
-
-					var leagues = connection.Query<League>("select * from League order by Season desc");
-					leagueList.DataSource = leagues;
+					leagueList.DataSource = LeagueService.GetActiveLeagues();
 					leagueList.DataBind();
 					leagueList.Items.Insert(0, new ListItem("-- Choose a League --", ""));
 					leagueList.SelectedIndex = 0;
@@ -52,7 +49,19 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					if (CurrentLeague > 0)
 						leagueList.SelectedValue = CurrentLeague.ToString();
 
-					connection.Close();
+					//SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
+					//connection.Open();
+
+					//var leagues = connection.Query<League>("select * from League order by Season desc");
+					//leagueList.DataSource = leagues;
+					//leagueList.DataBind();
+					//leagueList.Items.Insert(0, new ListItem("-- Choose a League --", ""));
+					//leagueList.SelectedIndex = 0;
+
+					//if (CurrentLeague > 0)
+					//	leagueList.SelectedValue = CurrentLeague.ToString();
+
+					//connection.Close();
 				}
 			}
 

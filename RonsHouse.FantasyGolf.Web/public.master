@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="public.master.cs" Inherits="RonsHouse.FantasyGolf.Web.PublicMasterPage" %>
+<%@ Register TagPrefix="common" TagName="navigation" Src="~/controls/navigation.ascx" %>
 
 <!DOCTYPE html>
 
@@ -34,29 +35,7 @@
 <body>
 	<form id="form1" runat="server" class="form-horizontal">
 
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="default.aspx">Fantasy Golf</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact Us</a></li>
-					<li><a href="#">Leagues</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/admin/default.aspx">Login</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<common:navigation id="navigation_control" runat="server" />
 
 	<div class="container">
 		<asp:ContentPlaceHolder ID="content_placeholder" runat="server" />
