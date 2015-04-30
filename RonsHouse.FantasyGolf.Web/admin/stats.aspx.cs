@@ -109,12 +109,12 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					data.Close();
 				}
 
-				var groupings = LeagueService.ListTournamentGroupings(this.CurrentLeagueId);
-				groupings_list.DataSource = groupings;
-				groupings_list.DataBind();
-
 				connection.Close();
 			}
+
+			var groupings = LeagueService.ListTournamentGroupings(this.CurrentLeagueId);
+			groupings_list.DataSource = groupings;
+			groupings_list.DataBind();
 		}
 
 		protected void BindUserPicksGrid()
