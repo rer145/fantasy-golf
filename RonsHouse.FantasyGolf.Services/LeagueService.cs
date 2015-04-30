@@ -42,5 +42,23 @@ namespace RonsHouse.FantasyGolf.Services
 				}
 			});
 		}
+
+		public static IList<TournamentGrouping> ListTournamentGroupings(int leagueId)
+		{
+			var cache = new CacheService();
+			return cache.Get("fg.league-tournament-groupings-" + leagueId.ToString(), 60, () =>
+			{
+				using (var db = new FantasyGolfContext())
+				{
+					var result = from ltg in db.LeagueTournamentGrouping
+								 join tg in db.TournamentGrouping on ltg.TournamentGroupingId equals tg.Id
+								 where ltg.IsActive == true && tg.IsActive == true && tg.LeagueId == leagueId
+								 orderby ltg.TournamentGrouping.Name
+								 select ltg.TournamentGrouping;
+
+					return result.ToList();
+				}
+			});
+		}
 	}
 }
