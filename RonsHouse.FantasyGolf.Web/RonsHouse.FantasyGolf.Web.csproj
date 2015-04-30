@@ -47,6 +47,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Exceptionless">
+      <HintPath>..\packages\Exceptionless.3.0.1326\lib\net45\Exceptionless.dll</HintPath>
+    </Reference>
+    <Reference Include="Exceptionless.Extras">
+      <HintPath>..\packages\Exceptionless.3.0.1326\lib\net45\Exceptionless.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="Exceptionless.Portable">
+      <HintPath>..\packages\Exceptionless.Portable.3.0.1326\lib\portable-net40+sl50+win+wpa81+wp80\Exceptionless.Portable.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>

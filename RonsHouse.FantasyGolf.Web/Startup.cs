@@ -5,6 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
+using Exceptionless;
 
 [assembly: OwinStartup(typeof(RonsHouse.FantasyGolf.Web.Startup))]
 
@@ -21,6 +22,8 @@ namespace RonsHouse.FantasyGolf.Web
 					AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
 					LoginPath = new PathString("/login.aspx")
 				});
+
+			ExceptionlessClient.Default.Register();
 		}
 	}
 }
