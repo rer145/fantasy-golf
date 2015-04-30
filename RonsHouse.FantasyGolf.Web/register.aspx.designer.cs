@@ -7,82 +7,100 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RonsHouse.FantasyGolf.Web.Admin {
+namespace RonsHouse.FantasyGolf.Web {
     
     
-    public partial class AdminPicksPage {
+    public partial class RegisterPage {
         
         /// <summary>
-        /// message_label_panel control.
+        /// email_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel message_label_panel;
+        protected global::System.Web.UI.WebControls.Label email_label;
         
         /// <summary>
-        /// message_label control.
+        /// email_textbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label message_label;
+        protected global::System.Web.UI.WebControls.TextBox email_textbox;
         
         /// <summary>
-        /// tournament_list_label control.
+        /// firstname_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label tournament_list_label;
+        protected global::System.Web.UI.WebControls.Label firstname_label;
         
         /// <summary>
-        /// tournament_list control.
+        /// firstname_textbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList tournament_list;
+        protected global::System.Web.UI.WebControls.TextBox firstname_textbox;
         
         /// <summary>
-        /// user_list_label control.
+        /// lastname_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label user_list_label;
+        protected global::System.Web.UI.WebControls.Label lastname_label;
         
         /// <summary>
-        /// user_list control.
+        /// lastname_textbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList user_list;
+        protected global::System.Web.UI.WebControls.TextBox lastname_textbox;
         
         /// <summary>
-        /// golfer_list_label control.
+        /// password_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label golfer_list_label;
+        protected global::System.Web.UI.WebControls.Label password_label;
         
         /// <summary>
-        /// golfer_list control.
+        /// password_textbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList golfer_list;
+        protected global::System.Web.UI.WebControls.TextBox password_textbox;
+        
+        /// <summary>
+        /// confirm_password_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label confirm_password_label;
+        
+        /// <summary>
+        /// confirm_password_textbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox confirm_password_textbox;
         
         /// <summary>
         /// submit_button control.
@@ -92,14 +110,5 @@ namespace RonsHouse.FantasyGolf.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button submit_button;
-        
-        /// <summary>
-        /// picks_grid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::RonsHouse.FantasyGolf.Web.Controls.BootstrapGridView picks_grid;
     }
 }

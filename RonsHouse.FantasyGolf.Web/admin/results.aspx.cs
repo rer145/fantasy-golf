@@ -8,9 +8,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using RonsHouse.FantasyGolf.Model;
-
-using Dapper;
+using RonsHouse.FantasyGolf.EF;
+using RonsHouse.FantasyGolf.Services;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
@@ -22,16 +21,14 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 			{
 				if (base.IsLeagueSelected)
 				{
-					SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
-					connection.Open();
-
-					var tournaments = connection.Query<Tournament>("Tournament_List", new { LeagueId = base.CurrentLeague }, commandType: CommandType.StoredProcedure);
-					tournament_list.DataSource = tournaments;
-					tournament_list.DataBind();
-					tournament_list.Items.Insert(0, "");
-					tournament_list.SelectedIndex = 0;
-
-					connection.Close();
+					using (var db = new FantasyGolfContext())
+					{
+						var tournaments = TournamentService.List(this.CurrentLeagueId);
+						tournament_list.DataSource = tournaments;
+						tournament_list.DataBind();
+						tournament_list.Items.Insert(0, "");
+						tournament_list.SelectedIndex = 0;
+					}
 				}
 				message_label_panel.Visible = false;
 			}
@@ -44,7 +41,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 
 			if (!String.IsNullOrEmpty(tournament_list.SelectedValue))
 			{
-				var golfers = connection.Query<Golfer>("select distinct g.*, g.LastName + ', ' + g.FirstName as Name from Golfer g inner join UserPick up on up.GolferId = g.Id where up.TournamentId = " + tournament_list.SelectedValue + " order by LastName");
+				var golfers = GolferService.ListActive(Convert.ToInt32(tournament_list.SelectedValue));
 				golfer_list.DataSource = golfers;
 				golfer_list.DataBind();
 				golfer_list.Items.Insert(0, "");
@@ -58,40 +55,21 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 
 		protected void OnSaveResults(object sender, EventArgs e)
 		{
-			//save values
-			SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
-			connection.Open();
-
-			connection.Query("TournamentResult_Set", new
-			{
-				TournamentId = tournament_list.SelectedValue,
-				GolferId = golfer_list.SelectedValue,
-				Place = place_textbox.Text,
-				Winnings = winnings_textbox.Text,
-				IsCut = cut_checkbox.Checked,
-				IsTied = tied_checkbox.Checked,
-				IsWithdrawn = wd_checkbox.Checked,
-				IsDisqualified = dq_checkbox.Checked,
-				IsPlayoff = playoff_checkbox.Checked
-			}, commandType: CommandType.StoredProcedure);
-
-			connection.Close();
-
-			//Response.Write("tournament: " + tournament_list.SelectedValue + "<br />");
-			//Response.Write("golfer: " + golfer_list.SelectedValue + "<br />");
-			//Response.Write("place: " + place_textbox.Text + "<br />");
-			//Response.Write("winnings: " + winnings_textbox.Text + "<br />");
-			//Response.Write("cut: " + cut_checkbox.Checked + "<br />");
-			//Response.Write("tied: " + tied_checkbox.Checked + "<br />");
-			//Response.Write("wd: " + wd_checkbox.Checked + "<br />");
-			//Response.Write("dq: " + dq_checkbox.Checked + "<br />");
-			//Response.Write("playoff: " + playoff_checkbox.Checked + "<br />");
-			
+			TournamentService.SaveResult(
+				tournament_list.SelectedValue,
+				golfer_list.SelectedValue,
+				place_textbox.Text,
+				winnings_textbox.Text,
+				cut_checkbox.Checked,
+				tied_checkbox.Checked,
+				wd_checkbox.Checked,
+				dq_checkbox.Checked,
+				playoff_checkbox.Checked
+			);
 			
 			message_label_panel.Visible = true;
 			message_label.Text = "Result was saved";
 
-			//reset values
 			golfer_list.SelectedIndex = 0;
 			place_textbox.Text = "";
 			winnings_textbox.Text = "";
@@ -115,7 +93,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					using (SqlCommand cmd = new SqlCommand("User_GetStandings", connection))
 					{
 						cmd.CommandType = CommandType.StoredProcedure;
-						cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeague));
+						cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeagueId));
 
 						IDataReader data = cmd.ExecuteReader();
 						standings_grid.DataSource = data;

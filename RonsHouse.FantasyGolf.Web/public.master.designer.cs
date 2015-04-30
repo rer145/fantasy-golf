@@ -40,6 +40,42 @@ namespace RonsHouse.FantasyGolf.Web {
         protected global::RonsHouse.FantasyGolf.Web.Controls.NavigationUserControl navigation_control;
         
         /// <summary>
+        /// message_label_panel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel message_label_panel;
+        
+        /// <summary>
+        /// message_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label message_label;
+        
+        /// <summary>
+        /// error_message_label_panel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel error_message_label_panel;
+        
+        /// <summary>
+        /// error_message_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label error_message_label;
+        
+        /// <summary>
         /// content_placeholder control.
         /// </summary>
         /// <remarks>

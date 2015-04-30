@@ -8,9 +8,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using RonsHouse.FantasyGolf.Model;
-
-using Dapper;
+using RonsHouse.FantasyGolf.EF;
+using RonsHouse.FantasyGolf.Services;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
@@ -26,19 +25,9 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 
 		protected void BindTournamentGrid()
 		{
-			//load up values
-			using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
-			{
-				connection.Open();
-
-				var tournaments = connection.Query<Tournament>("Tournament_List", new { LeagueId = base.CurrentLeague }, commandType: CommandType.StoredProcedure);
-				tournament_grid.DataSource = tournaments;
-				tournament_grid.DataBind();
-				try { tournament_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
-				catch { }
-
-				connection.Close();
-			}
+			var tournaments = TournamentService.List(this.CurrentLeagueId);
+			tournament_grid.DataSource = tournaments;
+			tournament_grid.DataBind();
 		}
 	}
 }

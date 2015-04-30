@@ -9,10 +9,8 @@ using System.Threading.Tasks;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using RonsHouse.FantasyGolf.Model;
+using RonsHouse.FantasyGolf.EF;
 using RonsHouse.FantasyGolf.Services;
-
-using Dapper;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
@@ -23,9 +21,14 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 			get { return Session["FantasyGolf.CurrentLeague"] != null && !String.IsNullOrEmpty(Session["FantasyGolf.CurrentLeague"].ToString()); }
 		}
 
-		public int CurrentLeague
+		public int CurrentLeagueId
 		{
 			get { return IsLeagueSelected ? Convert.ToInt32(Session["FantasyGolf.CurrentLeague"]) : 0; }
+		}
+
+		public League CurrentLeague
+		{
+			get { return IsLeagueSelected ? LeagueService.Get(this.CurrentLeagueId) : null; }
 		}
 		
 		protected override void OnLoad(EventArgs e)
@@ -46,22 +49,8 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					leagueList.Items.Insert(0, new ListItem("-- Choose a League --", ""));
 					leagueList.SelectedIndex = 0;
 
-					if (CurrentLeague > 0)
-						leagueList.SelectedValue = CurrentLeague.ToString();
-
-					//SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
-					//connection.Open();
-
-					//var leagues = connection.Query<League>("select * from League order by Season desc");
-					//leagueList.DataSource = leagues;
-					//leagueList.DataBind();
-					//leagueList.Items.Insert(0, new ListItem("-- Choose a League --", ""));
-					//leagueList.SelectedIndex = 0;
-
-					//if (CurrentLeague > 0)
-					//	leagueList.SelectedValue = CurrentLeague.ToString();
-
-					//connection.Close();
+					if (CurrentLeagueId > 0)
+						leagueList.SelectedValue = CurrentLeagueId.ToString();
 				}
 			}
 

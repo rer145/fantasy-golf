@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/admin.master" AutoEventWireup="true" CodeBehind="picks.aspx.cs" Inherits="RonsHouse.FantasyGolf.Web.Admin.User.PicksPage" %>
+<%@ Register TagPrefix="common" Assembly="RonsHouse.FantasyGolf.Web" Namespace="RonsHouse.FantasyGolf.Web.Controls" %>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="content_placeholder" runat="server">
 
 	<fieldset>
@@ -17,7 +19,7 @@
 
 		<div class="row">
 			<div class="col-lg-5">
-				<asp:GridView ID="userpicks_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover" OnRowDataBound="OnDataBoundUserPicks">
+				<common:BootstrapGridView ID="userpicks_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover" OnRowDataBound="OnDataBoundUserPicks">
 					<Columns>
 						<asp:BoundField HeaderText="Tournament" DataField="Name" />
 						<asp:TemplateField>
@@ -27,7 +29,7 @@
 							</ItemTemplate>
 						</asp:TemplateField>
 					</Columns>
-				</asp:GridView>
+				</common:BootstrapGridView>
 			</div>
 		</div>
 	</fieldset>

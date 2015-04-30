@@ -9,9 +9,10 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using RonsHouse.FantasyGolf.Model;
-
-using Dapper;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Host.SystemWeb;
 
 namespace RonsHouse.FantasyGolf.Web
 {
@@ -19,8 +20,12 @@ namespace RonsHouse.FantasyGolf.Web
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			FormsAuthentication.SignOut();
-			Response.Redirect("/default.aspx");
+			var authManager = HttpContext.Current.GetOwinContext().Authentication;
+			authManager.SignOut();
+			Response.Redirect("~/default.aspx");
+			
+			//FormsAuthentication.SignOut();
+			//Response.Redirect("/default.aspx");
 		}
 	}
 }

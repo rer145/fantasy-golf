@@ -8,9 +8,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using RonsHouse.FantasyGolf.Model;
-
-using Dapper;
+using RonsHouse.FantasyGolf.EF;
+using RonsHouse.FantasyGolf.Services;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {

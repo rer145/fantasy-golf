@@ -11,14 +11,5 @@ namespace RonsHouse.FantasyGolf.Web.Controls {
     
     
     public partial class NavigationUserControl {
-        
-        /// <summary>
-        /// navigation_login_view control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView navigation_login_view;
     }
 }

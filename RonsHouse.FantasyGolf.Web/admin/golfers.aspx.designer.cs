@@ -100,6 +100,6 @@ namespace RonsHouse.FantasyGolf.Web.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView golfer_grid;
+        protected global::RonsHouse.FantasyGolf.Web.Controls.BootstrapGridView golfer_grid;
     }
 }

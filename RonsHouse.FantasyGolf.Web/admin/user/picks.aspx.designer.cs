@@ -37,6 +37,6 @@ namespace RonsHouse.FantasyGolf.Web.Admin.User {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView userpicks_grid;
+        protected global::RonsHouse.FantasyGolf.Web.Controls.BootstrapGridView userpicks_grid;
     }
 }

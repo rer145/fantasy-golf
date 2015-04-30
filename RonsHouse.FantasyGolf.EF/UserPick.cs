@@ -19,9 +19,6 @@ namespace RonsHouse.FantasyGolf.EF
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int TournamentId { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int GolferId { get; set; }
 
         public DateTime CreatedOn { get; set; }

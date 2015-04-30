@@ -10,9 +10,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using RonsHouse.FantasyGolf.EF;
-using RonsHouse.FantasyGolf.Model;
 using RonsHouse.FantasyGolf.Services;
-using Dapper;
 
 namespace RonsHouse.FantasyGolf.Web.Admin.User
 {
@@ -20,25 +18,15 @@ namespace RonsHouse.FantasyGolf.Web.Admin.User
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			//script_literal.Text = "''";
-			
 			if (!Page.IsPostBack)
 			{
 				if (base.IsLeagueSelected)
 				{
-					//load up values
-					using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
-					{
-						connection.Open();
-
-						var users = connection.Query<RonsHouse.FantasyGolf.Model.User>("LeagueUser_List", new { LeagueId = base.CurrentLeague }, commandType: CommandType.StoredProcedure);
-						user_list.DataSource = users;
-						user_list.DataBind();
-						user_list.Items.Insert(0, "");
-						user_list.SelectedIndex = 0;
-
-						connection.Close();
-					}
+					var users = UserService.List(this.CurrentLeagueId);
+					user_list.DataSource = users;
+					user_list.DataBind();
+					user_list.Items.Insert(0, "");
+					user_list.SelectedIndex = 0;
 				}
 			}
 		}
@@ -57,13 +45,11 @@ namespace RonsHouse.FantasyGolf.Web.Admin.User
 						{
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add(new SqlParameter("UserId", user_list.SelectedValue));
-							cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeague));
+							cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeagueId));
 
 							IDataReader data = cmd.ExecuteReader();
 							userpicks_grid.DataSource = data;
 							userpicks_grid.DataBind();
-							try { userpicks_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
-							catch { }
 							data.Close();
 						}
 						
@@ -110,19 +96,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin.User
 				int userId = Convert.ToInt32(user_list.SelectedValue);
 				int golferId = Convert.ToInt32(ddl.SelectedValue);
 
-				using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
-				{
-					connection.Open();
-
-					connection.Query("UserPick_Set", new
-					{
-						TournamentId = tournamentId,
-						UserId = userId,
-						GolferId = golferId
-					}, commandType: CommandType.StoredProcedure);
-
-					connection.Close();
-				}
+				UserPickService.Save(userId, tournamentId, golferId);
 			}
 		}
 	}

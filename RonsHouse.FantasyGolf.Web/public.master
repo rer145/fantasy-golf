@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="public.master.cs" Inherits="RonsHouse.FantasyGolf.Web.PublicMasterPage" %>
-<%@ Register TagPrefix="common" TagName="navigation" Src="~/controls/navigation.ascx" %>
+<%@ Register TagPrefix="web" TagName="navigation" Src="~/controls/navigation.ascx" %>
 
 <!DOCTYPE html>
 
@@ -35,9 +35,23 @@
 <body>
 	<form id="form1" runat="server" class="form-horizontal">
 
-	<common:navigation id="navigation_control" runat="server" />
+	<web:navigation id="navigation_control" runat="server" />
 
 	<div class="container">
+		<asp:Panel ID="message_label_panel" runat="server" Visible="false">
+			<div class="alert alert-dismissable alert-info">
+				<button type="button" class="close" data-dismiss="alert">x</button>
+				<asp:Label ID="message_label" runat="server" />
+			</div>
+		</asp:Panel>
+
+		<asp:Panel ID="error_message_label_panel" runat="server" Visible="false">
+			<div class="alert alert-dismissable alert-danger">
+				<button type="button" class="close" data-dismiss="alert">x</button>
+				<asp:Label ID="error_message_label" runat="server" />
+			</div>
+		</asp:Panel>
+
 		<asp:ContentPlaceHolder ID="content_placeholder" runat="server" />
 	</div>
 

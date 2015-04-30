@@ -82,6 +82,7 @@
 					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Welcome <asp:Literal ID="account_name" runat="server" />!</a></li>
 					<li><a href="/logout.aspx">Logout</a></li>
 				</ul>
 				<div class="navbar-form navbar-right">

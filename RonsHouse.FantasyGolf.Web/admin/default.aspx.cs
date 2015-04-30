@@ -8,9 +8,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using RonsHouse.FantasyGolf.Model;
-
-using Dapper;
+using RonsHouse.FantasyGolf.EF;
+using RonsHouse.FantasyGolf.Services;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
@@ -35,7 +34,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					using (SqlCommand cmd = new SqlCommand("User_GetStandings", connection))
 					{
 						cmd.CommandType = CommandType.StoredProcedure;
-						cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeague));
+						cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeagueId));
 
 						IDataReader data = cmd.ExecuteReader();
 						standings_grid.DataSource = data;

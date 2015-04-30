@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="golfers.aspx.cs" Inherits="RonsHouse.FantasyGolf.Web.Admin.AdminGolfersPage" MasterPageFile="~/admin/admin.master" %>
+<%@ Register TagPrefix="common" Assembly="RonsHouse.FantasyGolf.Web" Namespace="RonsHouse.FantasyGolf.Web.Controls" %>
+
 <asp:Content ContentPlaceHolderID="content_placeholder" runat="server">
 
 	<asp:Panel ID="message_label_panel" runat="server" Visible="false">
@@ -39,12 +41,12 @@
 	<fieldset>
 		<legend>Available Golfers</legend>
 	
-		<asp:GridView ID="golfer_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover">
+		<common:BootstrapGridView ID="golfer_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover">
 			<Columns>
 				<asp:BoundField HeaderText="Name" DataField="Name" />
 				<asp:BoundField HeaderText="Last Name" DataField="LastName" />
 				<asp:BoundField HeaderText="First Name" DataField="FirstName" />
 			</Columns>
-		</asp:GridView>
+		</common:BootstrapGridView>
 	</fieldset>
 </asp:Content>

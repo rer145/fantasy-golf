@@ -9,9 +9,13 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using RonsHouse.FantasyGolf.Model;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Host.SystemWeb;
 
-using Dapper;
+using RonsHouse.FantasyGolf.EF;
+using RonsHouse.FantasyGolf.Services;
 
 namespace RonsHouse.FantasyGolf.Web
 {
@@ -27,11 +31,35 @@ namespace RonsHouse.FantasyGolf.Web
 			var email = email_textbox.Text;
 			var pass = password_textbox.Text;
 
-			//lookup in database
+			var userStore = new UserStore<IdentityUser>();
+			var userManager = new UserManager<IdentityUser>(userStore);
+			var user = userManager.Find(email_textbox.Text, password_textbox.Text);
 
-			if (email == "ron" && pass == "ron")
+			if (user != null)
 			{
-				FormsAuthentication.RedirectFromLoginPage(email, rememberme_checkbox.Checked);
+				var profile = UserService.Get(user.Email);	//TODO: save to session
+				if (profile != null)
+				{
+					Session["FantasyGolf.User"] = profile;
+				}
+				
+				var authManager = HttpContext.Current.GetOwinContext().Authentication;
+				var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+				authManager.SignIn(new AuthenticationProperties() { IsPersistent = rememberme_checkbox.Checked }, userIdentity);
+
+				if (Request.QueryString["RedirectUrl"] != null)
+				{
+					Response.Redirect(Server.UrlDecode(Request.QueryString["RedirectUrl"].ToString()));
+				}
+				else
+				{
+					Response.Redirect("~/admin/default.aspx");
+				}
+			}
+			else
+			{
+				base.ErrorPanel.Visible = true;
+				base.ErrorText = "Your login failed.";
 			}
 		}
 	}

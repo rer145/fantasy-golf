@@ -8,9 +8,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using RonsHouse.FantasyGolf.Model;
-
-using Dapper;
+using RonsHouse.FantasyGolf.EF;
+using RonsHouse.FantasyGolf.Services;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
@@ -22,23 +21,17 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 			{
 				if (base.IsLeagueSelected)
 				{
-					//load up values
-					SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
-					connection.Open();
-
-					var tournaments = connection.Query<Tournament>("Tournament_List", new { LeagueId = base.CurrentLeague }, commandType: CommandType.StoredProcedure);
+					var tournaments = TournamentService.List(this.CurrentLeagueId);
 					tournament_list.DataSource = tournaments;
 					tournament_list.DataBind();
 					tournament_list.Items.Insert(0, "");
 					tournament_list.SelectedIndex = 0;
 
-					var users = connection.Query<RonsHouse.FantasyGolf.Model.User>("LeagueUser_List", new { LeagueId = base.CurrentLeague }, commandType: CommandType.StoredProcedure);
+					var users = UserService.List(this.CurrentLeagueId);
 					user_list.DataSource = users;
 					user_list.DataBind();
 					user_list.Items.Insert(0, "");
 					user_list.SelectedIndex = 0;
-
-					connection.Close();
 
 					BindStandingsGrid();
 				}
@@ -106,7 +99,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 				using (SqlCommand cmd = new SqlCommand("User_GetStandings", connection))
 				{
 					cmd.CommandType = CommandType.StoredProcedure;
-					cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeague));
+					cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeagueId));
 
 					IDataReader data = cmd.ExecuteReader();
 					standings_grid.DataSource = data;
@@ -116,7 +109,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 					data.Close();
 				}
 
-				var groupings = connection.Query<TournamentGrouping>("TournamentGrouping_List", new { LeagueId = base.CurrentLeague }, commandType: CommandType.StoredProcedure);
+				var groupings = this.CurrentLeague.TournamentGrouping;
 				groupings_list.DataSource = groupings;
 				groupings_list.DataBind();
 
@@ -138,7 +131,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 						{
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add(new SqlParameter("UserId", user_list.SelectedValue));
-							cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeague));
+							cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeagueId));
 
 							IDataReader data = cmd.ExecuteReader();
 							userpicks_grid.DataSource = data;

@@ -8,9 +8,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using RonsHouse.FantasyGolf.Model;
-
-using Dapper;
+using RonsHouse.FantasyGolf.EF;
+using RonsHouse.FantasyGolf.Services;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
@@ -27,17 +26,7 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 
 		protected void OnSaveGolfer(object sender, EventArgs e)
 		{
-			//save values
-			SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
-			connection.Open();
-
-			connection.Query("Golfer_Save", new { 
-				FirstName = firstname_textbox.Text, 
-				LastName = lastname_textbox.Text,
-				TourId = tour_list.SelectedValue
-			}, commandType: CommandType.StoredProcedure);
-
-			connection.Close();
+			GolferService.Save(firstname_textbox.Text, lastname_textbox.Text, tour_list.SelectedValue);
 
 			firstname_textbox.Text = "";
 			lastname_textbox.Text = "";
@@ -50,23 +39,22 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 
 		protected void BindData()
 		{
-			//load up values
-			SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
-			connection.Open();
-
-			var golfers = connection.Query<Golfer>("select LastName, FirstName, LastName + ', ' + FirstName as Name from Golfer order by LastName");
+			var golfers = GolferService.ListActive();
 			golfer_grid.DataSource = golfers;
 			golfer_grid.DataBind();
-			try { golfer_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
-			catch { }
 
-			var tours = connection.Query<Golfer>("select * from Tour order by Name");
-			tour_list.DataSource = tours;
-			tour_list.DataBind();
-			tour_list.Items.Insert(0, "");
-			tour_list.SelectedIndex = 0;
+			using (var db = new FantasyGolfContext())
+			{
+				var tours = from x in db.Tour
+							where x.IsActive == true
+							orderby x.Name
+							select x;
 
-			connection.Close();
+				tour_list.DataSource = tours.ToList();
+				tour_list.DataBind();
+				tour_list.Items.Insert(0, "");
+				tour_list.SelectedIndex = 0;
+			}
 		}
 	}
 }

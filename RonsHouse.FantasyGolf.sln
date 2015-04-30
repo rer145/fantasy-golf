@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RonsHouse.FantasyGolf.Web", "RonsHouse.FantasyGolf.Web\RonsHouse.FantasyGolf.Web.csproj", "{04F3BE86-B569-438D-B2BD-0AFFF1092EB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RonsHouse.FantasyGolf.Model", "RonsHouse.FantasyGolf.Model\RonsHouse.FantasyGolf.Model.csproj", "{0DD0D708-95B8-42BD-AC7B-C5EC2092A204}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RonsHouse.FantasyGolf.SportsDataApi", "RonsHouse.FantasyGolf.SportsDataApi\RonsHouse.FantasyGolf.SportsDataApi.csproj", "{467394F3-DD39-4B6B-B630-54FB0488C017}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RonsHouse.FantasyGolf.DB", "RonsHouse.FantasyGolf.DB\RonsHouse.FantasyGolf.DB.sqlproj", "{78662E73-E15A-47FE-A03A-E06CD938A182}"
@@ -25,10 +23,6 @@ Global
 		{04F3BE86-B569-438D-B2BD-0AFFF1092EB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04F3BE86-B569-438D-B2BD-0AFFF1092EB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04F3BE86-B569-438D-B2BD-0AFFF1092EB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0DD0D708-95B8-42BD-AC7B-C5EC2092A204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DD0D708-95B8-42BD-AC7B-C5EC2092A204}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DD0D708-95B8-42BD-AC7B-C5EC2092A204}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DD0D708-95B8-42BD-AC7B-C5EC2092A204}.Release|Any CPU.Build.0 = Release|Any CPU
 		{467394F3-DD39-4B6B-B630-54FB0488C017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{467394F3-DD39-4B6B-B630-54FB0488C017}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{467394F3-DD39-4B6B-B630-54FB0488C017}.Release|Any CPU.ActiveCfg = Release|Any CPU

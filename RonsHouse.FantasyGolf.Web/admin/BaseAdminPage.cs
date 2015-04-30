@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
-	public class BaseAdminPage : Page
+	public class BaseAdminPage : Page		//TODO: inherit from BasePage and use message/error panels
 	{
 		protected override void OnLoad(EventArgs e)
 		{
@@ -17,6 +17,15 @@ namespace RonsHouse.FantasyGolf.Web.Admin
 			//{
 			//	leagueList.Visible = false;
 			//}
+
+			if (!User.Identity.IsAuthenticated || Session["FantasyGolf.User"] == null)
+			{
+				Response.Redirect("~/login.aspx?RedirectUrl=" + Server.UrlEncode(Request.Url.PathAndQuery));
+			}
+			else
+			{
+				((Literal)base.Master.FindControl("account_name")).Text = ((RonsHouse.FantasyGolf.EF.User)Session["FantasyGolf.User"]).FirstName;
+			}
 
 			base.OnLoad(e);
 		}

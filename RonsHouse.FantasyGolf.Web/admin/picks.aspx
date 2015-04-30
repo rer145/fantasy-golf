@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="picks.aspx.cs" Inherits="RonsHouse.FantasyGolf.Web.Admin.AdminPicksPage" MasterPageFile="~/admin/admin.master" %>
+<%@ Register TagPrefix="common" Assembly="RonsHouse.FantasyGolf.Web" Namespace="RonsHouse.FantasyGolf.Web.Controls" %>
+
 <asp:Content ContentPlaceHolderID="content_placeholder" runat="server">
 
 	<asp:Panel ID="message_label_panel" runat="server" Visible="false">
@@ -39,11 +41,17 @@
 	<fieldset>
 		<legend>Tournament Picks</legend>
 	
-		<asp:GridView ID="picks_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover">
+		<%--<asp:GridView ID="picks_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover">
 			<Columns>
 				<asp:BoundField HeaderText="User" DataField="UserName" />
 				<asp:BoundField HeaderText="Golfer" DataField="GolferName" />
 			</Columns>
-		</asp:GridView>
+		</asp:GridView>--%>
+		<common:BootstrapGridView ID="picks_grid" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover">
+			<Columns>
+				<asp:BoundField HeaderText="User" DataField="UserName" />
+				<asp:BoundField HeaderText="Golfer" DataField="GolferName" />
+			</Columns>
+		</common:BootstrapGridView>
 	</fieldset>
 </asp:Content>

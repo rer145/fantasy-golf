@@ -39,9 +39,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper">
-      <HintPath>..\packages\Dapper.1.39\lib\net45\Dapper.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -50,7 +47,37 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
@@ -77,9 +104,9 @@
     <Content Include="admin\stats.aspx" />
     <Content Include="admin\results.aspx" />
     <Content Include="admin\picks.aspx" />
-    <Content Include="admin\remote\tournaments.aspx" />
     <Content Include="admin\user\picks.aspx" />
     <Content Include="controls\navigation.ascx" />
+    <Content Include="register.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="login.aspx" />
     <Content Include="default.aspx" />
@@ -116,12 +143,20 @@
     <Compile Include="admin\user\picks.aspx.designer.cs">
       <DependentUpon>picks.aspx</DependentUpon>
     </Compile>
+    <Compile Include="controls\BootstrapGridView.cs" />
     <Compile Include="controls\navigation.ascx.cs">
       <DependentUpon>navigation.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\navigation.ascx.designer.cs">
       <DependentUpon>navigation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="register.aspx.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="register.aspx.designer.cs">
+      <DependentUpon>register.aspx</DependentUpon>
     </Compile>
     <Compile Include="logout.aspx.cs">
       <DependentUpon>logout.aspx</DependentUpon>
@@ -199,13 +234,6 @@
     <Compile Include="admin\picks.aspx.designer.cs">
       <DependentUpon>picks.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\remote\tournaments.aspx.cs">
-      <DependentUpon>tournaments.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\remote\tournaments.aspx.designer.cs">
-      <DependentUpon>tournaments.aspx</DependentUpon>
-    </Compile>
     <Compile Include="BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -213,15 +241,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RonsHouse.FantasyGolf.EF\RonsHouse.FantasyGolf.EF.csproj">
       <Project>{e19cccfd-fa03-4114-b504-a14a05fd828e}</Project>
       <Name>RonsHouse.FantasyGolf.EF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RonsHouse.FantasyGolf.Model\RonsHouse.FantasyGolf.Model.csproj">
-      <Project>{0dd0d708-95b8-42bd-ac7b-c5ec2092a204}</Project>
-      <Name>RonsHouse.FantasyGolf.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\RonsHouse.FantasyGolf.Services\RonsHouse.FantasyGolf.Services.csproj">
       <Project>{1cc09444-9488-42e4-ae5f-be685335a2d9}</Project>
