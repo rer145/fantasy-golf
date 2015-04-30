@@ -91,5 +91,11 @@
     <Build Include="dbo\Stored Procedures\TournamentResult_Set.sql" />
     <Build Include="dbo\Stored Procedures\Tournament_GetResults.sql" />
     <Build Include="dbo\Stored Procedures\Golfer_Save.sql" />
+    <Build Include="dbo\Tables\AspNetUsers.sql" />
+    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
+    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
+    <Build Include="dbo\Tables\AspNetRoles.sql" />
+    <Build Include="dbo\Tables\__MigrationHistory.sql" />
   </ItemGroup>
 </Project>
