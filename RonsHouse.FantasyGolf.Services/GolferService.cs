@@ -98,6 +98,7 @@ namespace RonsHouse.FantasyGolf.Services
 				golfer.FirstName = firstName;
 				golfer.LastName = lastName;
 				golfer.TourId = tourId;
+				golfer.CreatedOn = DateTime.Now;
 
 				db.SaveChanges();
 			}

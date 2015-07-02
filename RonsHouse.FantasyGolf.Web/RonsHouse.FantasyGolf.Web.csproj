@@ -113,7 +113,8 @@
     <Content Include="admin\stats.aspx" />
     <Content Include="admin\results.aspx" />
     <Content Include="admin\picks.aspx" />
-    <Content Include="admin\user\picks.aspx" />
+    <Content Include="admin\user\user-picks.aspx" />
+    <Content Include="api\default.aspx" />
     <Content Include="controls\navigation.ascx" />
     <Content Include="register.aspx" />
     <Content Include="logout.aspx" />
@@ -145,12 +146,19 @@
     <Compile Include="admin\tournaments.aspx.designer.cs">
       <DependentUpon>tournaments.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\user\picks.aspx.cs">
-      <DependentUpon>picks.aspx</DependentUpon>
+    <Compile Include="admin\user\user-picks.aspx.cs">
+      <DependentUpon>user-picks.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\user\picks.aspx.designer.cs">
-      <DependentUpon>picks.aspx</DependentUpon>
+    <Compile Include="admin\user\user-picks.aspx.designer.cs">
+      <DependentUpon>user-picks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="api\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="api\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="controls\BootstrapGridView.cs" />
     <Compile Include="controls\navigation.ascx.cs">
@@ -268,7 +276,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="admin\owner\" />
-    <Folder Include="api\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

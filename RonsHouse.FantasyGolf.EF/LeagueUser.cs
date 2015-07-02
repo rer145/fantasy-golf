@@ -19,6 +19,8 @@ namespace RonsHouse.FantasyGolf.EF
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int UserId { get; set; }
 
+		public bool IsManager { get; set; }
+
         public bool IsActive { get; set; }
 
         public DateTime CreatedOn { get; set; }

@@ -14,7 +14,7 @@ using RonsHouse.FantasyGolf.Services;
 
 namespace RonsHouse.FantasyGolf.Web.Admin.User
 {
-	public partial class PicksPage : BaseAdminLeaguePage
+	public partial class TournamentPicksPage : BaseAdminLeaguePage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -22,18 +22,18 @@ namespace RonsHouse.FantasyGolf.Web.Admin.User
 			{
 				if (base.IsLeagueSelected)
 				{
-					var users = UserService.List(this.CurrentLeagueId);
-					user_list.DataSource = users;
-					user_list.DataBind();
-					user_list.Items.Insert(0, "");
-					user_list.SelectedIndex = 0;
+					var tournaments = TournamentService.List(this.CurrentLeagueId);
+					tournament_list.DataSource = tournaments;
+					tournament_list.DataBind();
+					tournament_list.Items.Insert(0, "");
+					tournament_list.SelectedIndex = 0;
 				}
 			}
 		}
 
-		protected void OnSelectUser(object sender, EventArgs e)
+		protected void OnSelectTournament(object sender, EventArgs e)
 		{
-			if (!String.IsNullOrEmpty(user_list.SelectedValue))
+			if (!String.IsNullOrEmpty(tournament_list.SelectedValue))
 			{
 				if (base.IsLeagueSelected)
 				{
