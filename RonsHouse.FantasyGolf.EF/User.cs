@@ -31,6 +31,9 @@ namespace RonsHouse.FantasyGolf.EF
         [StringLength(80)]
         public string Email { get; set; }
 
+		[StringLength(128)]
+		public string AspNetUserId { get; set; }
+
         public bool IsActive { get; set; }
 
         public DateTime CreatedOn { get; set; }

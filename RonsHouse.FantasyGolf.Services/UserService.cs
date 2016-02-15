@@ -28,9 +28,9 @@ namespace RonsHouse.FantasyGolf.Services
 
 		public static User Get(string email)
 		{
-			var cache = new CacheService();
-			return cache.Get("fg.user-" + email, 60, () =>
-			{
+			//var cache = new CacheService();
+			//return cache.Get("fg.user-" + email, 60, () =>
+			//{
 				using (var db = new FantasyGolfContext())
 				{
 					var result = from x in db.User
@@ -39,7 +39,19 @@ namespace RonsHouse.FantasyGolf.Services
 
 					return result.FirstOrDefault();
 				}
-			});
+			//});
+		}
+
+		public static User GetByAspNetUserId(string aspNetUserId)
+		{
+			using (var db = new FantasyGolfContext())
+			{
+				var result = from x in db.User
+							 where x.AspNetUserId == aspNetUserId && x.IsActive == true
+							 select x;
+
+				return result.Count<User>() == 0 ? null : result.First();
+			}
 		}
 
 		public static IList<User> List(int leagueId)
@@ -59,18 +71,21 @@ namespace RonsHouse.FantasyGolf.Services
 			});
 		}
 
-		public static User Create(string email, string firstName, string lastName)
+		public static User Create(string email, string firstName, string lastName, string aspNetUserId)
 		{
 			User user = new User
 			{
 				FirstName = firstName,
 				LastName = lastName,
-				Email = email
+				Email = email,
+				AspNetUserId = aspNetUserId,
+				IsActive = true,
+				CreatedOn = DateTime.Now
 			};
 
 			using (var db = new FantasyGolfContext())
 			{
-				//db.Entry<User>(user);
+				db.User.Add(user);
 				db.SaveChanges();
 			}
 

@@ -31,6 +31,24 @@ namespace RonsHouse.FantasyGolf.Web.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// league_owner_menu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LoginView league_owner_menu;
+        
+        /// <summary>
+        /// administrator_menu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LoginView administrator_menu;
+        
+        /// <summary>
         /// account_name control.
         /// </summary>
         /// <remarks>

@@ -58,32 +58,50 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="/admin/stats.aspx">Stats</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">League Owner <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="/admin/league/default.aspx">League</a></li>
-							<li><a href="/admin/league/users.aspx">Users</a></li>
-							<li><a href="/admin/league/groupings.aspx">Groupings</a></li>
-							<li><a href="/admin/picks.aspx">Picks</a></li>
-						</ul>
-					</li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="/admin/leagues.aspx">Leagues</a></li>
-							<li><a href="/admin/users.aspx">Users</a></li>
-							<li><a href="/admin/user/user-picks.aspx">Mass User Picks</a></li>
-							<li><a href="/admin/user/tournament-picks.aspx">Mass Tournament Picks</a></li>
-							<li><a href="/admin/user/tournament-results.aspx">Mass Tournament Results</a></li>
-							<li class="divider"></li>
-							<li><a href="/admin/golfers.aspx">Golfers</a></li>
-							<li><a href="/admin/tournaments.aspx">Tournaments</a></li>
-							<li><a href="/admin/results.aspx">Results</a></li>
-							<li class="divider"></li>
-							<li><a href="/admin/remote.aspx">Remote Data</a></li>
-						</ul>
-					</li>
+					<li><a href="/admin/default.aspx">Home</a></li>
+					<li><a href="/admin/picks.aspx">Make Picks</a></li>
+					<%--<li><a href="/admin/stats.aspx">Stats</a></li>--%>
+					<asp:LoginView ID="league_owner_menu" runat="server">
+						<RoleGroups>
+							<asp:RoleGroup Roles="Administrator,League Owner">
+								<ContentTemplate>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">League Owner <span class="caret"></span></a>
+										<ul class="dropdown-menu" role="menu">
+											<li><a href="/admin/league/default.aspx">League</a></li>
+											<li><a href="/admin/league/users.aspx">Users</a></li>
+											<li><a href="/admin/league/groupings.aspx">Groupings</a></li>
+											<li><a href="/admin/picks.aspx">Picks</a></li>
+										</ul>
+									</li>
+								</ContentTemplate>
+							</asp:RoleGroup>
+						</RoleGroups>
+					</asp:LoginView>
+					<asp:LoginView ID="administrator_menu" runat="server">
+						<RoleGroups>
+							<asp:RoleGroup Roles="Administrator">
+								<ContentTemplate>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
+										<ul class="dropdown-menu" role="menu">
+											<li><a href="/admin/leagues.aspx">Leagues</a></li>
+											<li><a href="/admin/users.aspx">Users</a></li>
+											<li><a href="/admin/user/user-picks.aspx">Mass User Picks</a></li>
+											<li><a href="/admin/user/tournament-picks.aspx">Mass Tournament Picks</a></li>
+											<li><a href="/admin/user/tournament-results.aspx">Mass Tournament Results</a></li>
+											<li class="divider"></li>
+											<li><a href="/admin/golfers.aspx">Golfers</a></li>
+											<li><a href="/admin/tournaments.aspx">Tournaments</a></li>
+											<li><a href="/admin/results.aspx">Results</a></li>
+											<li class="divider"></li>
+											<li><a href="/admin/remote.aspx">Remote Data</a></li>
+										</ul>
+									</li>
+								</ContentTemplate>
+							</asp:RoleGroup>
+						</RoleGroups>
+					</asp:LoginView>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Welcome <asp:Literal ID="account_name" runat="server" />!</a></li>

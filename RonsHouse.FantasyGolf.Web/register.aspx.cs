@@ -65,16 +65,21 @@ namespace RonsHouse.FantasyGolf.Web
 					IdentityResult result = manager.Create(user, password_textbox.Text);
 					if (result.Succeeded)
 					{
+						var currentUser = manager.FindByName(user.UserName);
+						var roleResult = manager.AddToRole(currentUser.Id, "User");
+						
 						var authManager = HttpContext.Current.GetOwinContext().Authentication;
 						var userIdentity = manager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
 						authManager.SignIn(new AuthenticationProperties() { }, userIdentity);
 
-						//TODO: add user info to User table for profile information
-						// do lookups between identity and User via email?
-						var profile = UserService.Get(user.Email);
-						if (profile != null)
+						var profile = UserService.GetByAspNetUserId(currentUser.Id);
+						if (profile == null)
 						{
-							Session["FantasyGolf.User"] = UserService.Create(email_textbox.Text, firstname_textbox.Text, lastname_textbox.Text);
+							Session["FantasyGolf.User"] = UserService.Create(email_textbox.Text, firstname_textbox.Text, lastname_textbox.Text, currentUser.Id);
+						}
+						else
+						{
+							Session["FantasyGolf.User"] = profile;
 						}
 						
 						Response.Redirect("~/admin/default.aspx");

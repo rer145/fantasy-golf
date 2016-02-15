@@ -13,39 +13,61 @@ using RonsHouse.FantasyGolf.Services;
 
 namespace RonsHouse.FantasyGolf.Web.Admin
 {
-	public partial class AdminDefaultPage : BaseAdminLeaguePage
+	public partial class AdminDefaultPage : BaseAdminPage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!Page.IsPostBack)
 			{
-				BindStandingsGrid();
+				BindLeagueGrid();
 			}
 		}
 
-		protected void BindStandingsGrid()
+		protected void BindLeagueGrid()
 		{
-			if (base.IsLeagueSelected)
+			using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
 			{
-				using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
+				connection.Open();
+
+				using (SqlCommand cmd = new SqlCommand("User_GetLeagues", connection))
 				{
-					connection.Open();
+					cmd.CommandType = CommandType.StoredProcedure;
+					cmd.Parameters.Add(new SqlParameter("UserId", base.CurrentUser.Id));
 
-					using (SqlCommand cmd = new SqlCommand("User_GetStandings", connection))
-					{
-						cmd.CommandType = CommandType.StoredProcedure;
-						cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeagueId));
-
-						IDataReader data = cmd.ExecuteReader();
-						standings_grid.DataSource = data;
-						standings_grid.DataBind();
-						try { standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
-						catch { }
-						data.Close();
-					}
-					connection.Close();
+					IDataReader data = cmd.ExecuteReader();
+					leagues_grid.DataSource = data;
+					leagues_grid.DataBind();
+					try { leagues_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
+					catch { }
+					data.Close();
 				}
+				connection.Close();
 			}
 		}
+
+		//protected void BindStandingsGrid()
+		//{
+		//	if (base.IsLeagueSelected)
+		//	{
+		//		using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
+		//		{
+		//			connection.Open();
+
+		//			using (SqlCommand cmd = new SqlCommand("User_GetStandings", connection))
+		//			{
+		//				cmd.CommandType = CommandType.StoredProcedure;
+		//				cmd.Parameters.Add(new SqlParameter("LeagueId", base.CurrentLeagueId));
+
+		//				IDataReader data = cmd.ExecuteReader();
+		//				standings_grid.DataSource = data;
+		//				standings_grid.DataBind();
+		//				try { standings_grid.HeaderRow.TableSection = TableRowSection.TableHeader; }
+		//				catch { }
+		//				data.Close();
+		//			}
+		//			connection.Close();
+		//		}
+		//	}
+		//}
 	}
 }
