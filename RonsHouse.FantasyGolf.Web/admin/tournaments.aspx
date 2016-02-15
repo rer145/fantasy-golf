@@ -18,17 +18,16 @@
 				<asp:BoundField HeaderText="Name" DataField="Name" />
 				<asp:BoundField HeaderText="Begins On" DataField="BeginsOn" DataFormatString="{0:d}" />
 				<asp:BoundField HeaderText="Ends On" DataField="EndsOn" DataFormatString="{0:d}" />
-				<%--<asp:ButtonField HeaderText="Edit" ButtonType="Link" CommandName="Edit" Text="Edit" />--%>
 				<asp:TemplateField>
 					<ItemTemplate>
-						<asp:LinkButton ID="picks_button" runat="server" CommandName="Picks" Text="View Picks" CssClass="btn btn-info btn-xs" />
-						<asp:LinkButton ID="edit_button" runat="server" CommandName="Edit" Text="Edit" CssClass="btn btn-primary btn-xs" />
-						<asp:LinkButton ID="delete_button" runat="server" CommandName="Delete" Text="Delete" CssClass="btn btn-danger btn-xs" />
+						<asp:LinkButton ID="remote_results_button" runat="server" CommandName="RemoteResults" CommandArgument='<%# Eval("ID") %>' OnCommand="OnClickTournamentOption" Text="Download Results" CssClass="btn btn-warning btn-xs" />
+						<asp:LinkButton ID="picks_button" runat="server" CommandName="Picks" CommandArgument='<%# Eval("ID") %>' OnCommand="OnClickTournamentOption" Text="View Picks" CssClass="btn btn-info btn-xs" />
+						<asp:LinkButton ID="edit_button" runat="server" CommandName="Edit" CommandArgument='<%# Eval("ID") %>' OnCommand="OnClickTournamentOption" Text="Edit" CssClass="btn btn-primary btn-xs" />
+						<asp:LinkButton ID="delete_button" runat="server" CommandName="Delete" CommandArgument='<%# Eval("ID") %>' OnCommand="OnClickTournamentOption" Text="Delete" CssClass="btn btn-danger btn-xs" />
 					</ItemTemplate>
 				</asp:TemplateField>
 			</Columns>
 		</common:BootstrapGridView>
 	</fieldset>
-
 	
 </asp:Content>

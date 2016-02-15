@@ -1,7 +1,10 @@
-﻿using System.Web.UI.WebControls;
+﻿using System.Security.Permissions;
+using System.Web;
+using System.Web.UI.WebControls;
 
 namespace RonsHouse.FantasyGolf.Web.Controls
 {
+	[AspNetHostingPermission(SecurityAction.Demand, Level = AspNetHostingPermissionLevel.Minimal)]
 	public class BootstrapGridView : GridView
 	{
 		protected override void OnPreRender(System.EventArgs e)

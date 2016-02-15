@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using RonsHouse.FantasyGolf.EF;
 
 namespace RonsHouse.FantasyGolf.Services
@@ -99,8 +99,13 @@ namespace RonsHouse.FantasyGolf.Services
 				golfer.LastName = lastName;
 				golfer.TourId = tourId;
 				golfer.CreatedOn = DateTime.Now;
+				golfer.LastSyncedOn = null;
+				golfer.IsActive = true;
 
 				db.SaveChanges();
+
+				var cache = new CacheService();
+				cache.Remove("fg.golfers");
 			}
 		}
 	}

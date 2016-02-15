@@ -1,0 +1,11 @@
+-Data Jobs
+	-Nightly pull of players
+	-Nightly pull of schedule
+	-Nightly pull of results
+		-only run on nights of tournament is running
+		-only run for current tournament(s)
+		-download hole by hole results
+
+-store remote data in tables 
+-setup data links between remote data and picked data
+-create site registration and league joining

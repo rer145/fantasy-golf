@@ -108,6 +108,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\default.aspx" />
+    <Content Include="admin\edit-league.aspx" />
+    <Content Include="admin\leagues.aspx" />
+    <Content Include="admin\remote.aspx" />
+    <Content Include="admin\remote\tournaments.aspx" />
     <Content Include="admin\tournaments.aspx" />
     <Content Include="admin\golfers.aspx" />
     <Content Include="admin\stats.aspx" />
@@ -139,6 +143,34 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\edit-league.aspx.cs">
+      <DependentUpon>edit-league.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\edit-league.aspx.designer.cs">
+      <DependentUpon>edit-league.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\leagues.aspx.cs">
+      <DependentUpon>leagues.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\leagues.aspx.designer.cs">
+      <DependentUpon>leagues.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\remote.aspx.cs">
+      <DependentUpon>remote.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\remote.aspx.designer.cs">
+      <DependentUpon>remote.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\remote\tournaments.aspx.cs">
+      <DependentUpon>tournaments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\remote\tournaments.aspx.designer.cs">
+      <DependentUpon>tournaments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\tournaments.aspx.cs">
       <DependentUpon>tournaments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -161,6 +193,8 @@
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="controls\BootstrapGridView.cs" />
+    <Compile Include="controls\DynamicJsonConverter.cs" />
+    <Compile Include="controls\Modal.cs" />
     <Compile Include="controls\navigation.ascx.cs">
       <DependentUpon>navigation.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -168,6 +202,8 @@
     <Compile Include="controls\navigation.ascx.designer.cs">
       <DependentUpon>navigation.ascx</DependentUpon>
     </Compile>
+    <Compile Include="controls\Notification.cs" />
+    <Compile Include="controls\ProgressBar.cs" />
     <Compile Include="register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

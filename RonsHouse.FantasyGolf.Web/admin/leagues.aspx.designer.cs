@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RonsHouse.FantasyGolf.Web.Admin.Remote {
+namespace RonsHouse.FantasyGolf.Web.Admin {
     
     
-    public partial class TournamentPage {
+    public partial class AdminLeaguesPage {
         
         /// <summary>
-        /// sync_button control.
+        /// league_grid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button sync_button;
+        protected global::RonsHouse.FantasyGolf.Web.Controls.BootstrapGridView league_grid;
     }
 }

@@ -38,32 +38,5 @@ namespace RonsHouse.FantasyGolf.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::RonsHouse.FantasyGolf.Web.Controls.BootstrapGridView tournament_grid;
-        
-        /// <summary>
-        /// picks_button control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton picks_button;
-        
-        /// <summary>
-        /// edit_button control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton edit_button;
-        
-        /// <summary>
-        /// delete_button control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton delete_button;
     }
 }

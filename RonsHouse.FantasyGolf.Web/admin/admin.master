@@ -31,7 +31,7 @@
 
 	<style type="text/css">
 		body {
-			padding-top : 50px;
+			padding-top : 60px;
 		}
 	</style>
 
@@ -80,6 +80,8 @@
 							<li><a href="/admin/golfers.aspx">Golfers</a></li>
 							<li><a href="/admin/tournaments.aspx">Tournaments</a></li>
 							<li><a href="/admin/results.aspx">Results</a></li>
+							<li class="divider"></li>
+							<li><a href="/admin/remote.aspx">Remote Data</a></li>
 						</ul>
 					</li>
 				</ul>
